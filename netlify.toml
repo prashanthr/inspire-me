@@ -1,3 +1,2 @@
 [build]
   Functions = "build-functions"
-  Publish = "build"
