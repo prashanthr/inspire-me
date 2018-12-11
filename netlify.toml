@@ -1,4 +1,4 @@
 [build]
-  Command = "yarn build-functions"
+  Command = "yarn build"
   Functions = "build-functions"
   Publish = "build"
