@@ -1,2 +1,2 @@
 [build]
-  Functions = "build-functions"
+  functions = "./build-functions"
