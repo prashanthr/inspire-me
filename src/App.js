@@ -6,21 +6,28 @@ import './App.css';
 class App extends Component {
   constructor (props) {
     super(props)
+    this.inspire = this.inspire.bind(this)
     this.state = {
       img: null
     }
   }
+  inspire () {
+    axios
+      .get('/.netlify/functions/inspire')
+      .then(res => this.setState({ img: res.data.data }))
+  }
   componentWillMount () {
-    axios.get('/.netlify/functions/inspire').then(res => this.setState({ img: res.data.data }))
+    this.inspire()
   }
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          {!this.state.img && `Loading...`}
           {this.state.img && 
             <img alt='inspire-strip' src={this.state.img} />
           }
+          <br /><br /><button onClick={this.inspire}>Inspire Me</button>
         </header>
       </div>
     );
