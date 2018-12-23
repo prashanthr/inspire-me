@@ -27,7 +27,13 @@ class App extends Component {
           {this.state.img && 
             <img alt='inspire-strip' src={this.state.img} />
           }
-          <br /><br /><button class='inspire-button' onClick={this.inspire}>Inspire Me</button>
+          <br /><br />
+          <button 
+            class='inspire-button' 
+            onClick={this.inspire}
+          >
+            Inspire Me
+          </button>
         </div>
         <footer className='footer'>Copyright © PR.</footer>
       </div>
