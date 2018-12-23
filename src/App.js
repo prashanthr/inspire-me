@@ -29,6 +29,7 @@ class App extends Component {
           }
           <br /><br /><button class='inspire-button' onClick={this.inspire}>Inspire Me</button>
         </div>
+        <footer className='footer'>Copyright © PR.</footer>
       </div>
     );
   }
