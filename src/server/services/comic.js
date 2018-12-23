@@ -1,5 +1,6 @@
 import SourceService from './source'
 import { sample, random } from 'lodash'
+import axios from 'axios'
 import moment from 'moment'
 
 const randomDate = (start, end) => {
@@ -8,21 +9,23 @@ const randomDate = (start, end) => {
 
 const SOURCES = [{
   name: 'dilbert',
-  getUrl: () => {
+  getUrl: async () => {
     const dt = randomDate(new Date(2012, 0, 1), new Date())
     const formattedDt = moment(dt).format('YYYY-MM-DD')
     return `https://dilbert.com/strip/${formattedDt}`
   }
 }, {
   name: 'xkcd',
-  disabled: true,
-  getUrl: () => {
-    const randomStripNum = random(1, 2085)
-    return `https://xkcd.com`
+  disableUnfurl: true, // PRE-FURLED
+  getUrl: async () => {
+    console.log('here')
+    const randomStripNum = random(1, 2100)
+    const res = await axios.get(`https://xkcd.now.sh/${randomStripNum}`)
+    return res.data.img
   }
 }, {
   name: 'yeti',
-  getUrl: () => {
+  getUrl: async () => {
     const dt = randomDate(new Date(2014, 9, 8), new Date())
     const formattedDt = moment(dt).format('YYYY/MM/DD')
     return `https://www.gocomics.com/the-awkward-yeti/${formattedDt}`
@@ -30,40 +33,40 @@ const SOURCES = [{
 }, {
   name: 'devhumor',
   disabled: true,
-  getUrl: () => {
+  getUrl: async () => {
     return `http://devhumor.com/`
   }
 }, {
   name: 'calvin',
-  getUrl: () => {
+  getUrl: async () => {
     const dt = randomDate(new Date(2012, 0, 1), new Date())
     const formattedDt = moment(dt).format('YYYY/MM/DD')
     return `https://www.gocomics.com/calvinandhobbes/${formattedDt}`
   }
 },{ 
   name: 'beardo',
-  getUrl: () => {
+  getUrl: async () => {
     const dt = randomDate(new Date(2015, 5, 6), new Date())
     const formattedDt = moment(dt).format('YYYY/MM/DD')
     return `https://www.gocomics.com/beardo/${formattedDt}`
   }
 }, {
   name: 'breakofday',
-  getUrl: () => {
+  getUrl: async () => {
     const dt = randomDate(new Date(2011, 8, 29), new Date())
     const formattedDt = moment(dt).format('YYYY/MM/DD')
     return `https://www.gocomics.com/break-of-day/${formattedDt}`
   }
 }, {
   name: 'thedailydrawing',
-  getUrl: () => {
+  getUrl: async () => {
     const dt = randomDate(new Date(2015, 1, 19), new Date())
     const formattedDt = moment(dt).format('YYYY/MM/DD')
     return `https://www.gocomics.com/the-daily-drawing/${formattedDt}`
   }
 }, {
   name: 'liz-climo-cartoons',
-  getUrl: () => {
+  getUrl: async () => {
     const dt = randomDate(new Date(2018, 3, 26), new Date())
     const formattedDt = moment(dt).format('YYYY/MM/DD')
     return `https://www.gocomics.com/liz-climo-cartoons/${formattedDt}`
@@ -74,9 +77,17 @@ class ComicService extends SourceService {
   getSource () {
     return sample(SOURCES.filter(source => !source.disabled))
   }
-  getUrl () {
+  async getUrl (source) {
+    return await source.getUrl()
+  }
+
+  async getDetails () {
     const source = this.getSource()
-    return source.getUrl()
+    return {
+      name: source.name,
+      url: await this.getUrl(source),
+      disableUnfurl: source.disableUnfurl
+    }
   }
 }
 

@@ -1,7 +1,10 @@
 import unfurled from 'unfurled'
 import { get as getProperty } from 'lodash';
 class UnfurlService {
-  async unfurl ({ url, type }) {
+  async unfurl ({ url, type, disableUnfurl }) {
+    if (disableUnfurl) {
+      return url
+    }
     const result = await unfurled(url)
     switch (type) {
       case 'img':
@@ -13,8 +16,6 @@ class UnfurlService {
         return this.getBasicDetails({ url, data: result })
       case 'link':
         return this.getUrl(result)
-      case 'pre-furled':
-        return url
       case 'raw':
       default:
         return result
