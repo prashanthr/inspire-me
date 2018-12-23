@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import axios from 'axios'
 import './App.css';
 
@@ -7,14 +6,26 @@ class App extends Component {
   constructor (props) {
     super(props)
     this.inspire = this.inspire.bind(this)
+    this.updateImg = this.updateImg.bind(this)
     this.state = {
-      img: null
+      img: null,
+      loading: true
     }
   }
+  updateImg (data) {
+    this.setState({ 
+      img: data,
+      loading: false
+    })
+  }
+
   inspire () {
+    this.setState({
+      loading: true
+    })
     axios
       .get('/.netlify/functions/inspire')
-      .then(res => this.setState({ img: res.data.data }))
+      .then(res => this.updateImg(res.data.data))
   }
   componentWillMount () {
     this.inspire()
@@ -22,13 +33,28 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          {!this.state.img && `Loading...`}
+        <div className="App-content">
           {this.state.img && 
-            <img alt='inspire-strip' src={this.state.img} />
+            <img 
+              className='inspire-strip' 
+              alt='inspire-strip' 
+              src={this.state.img} 
+            />
           }
-          <br /><br /><button onClick={this.inspire}>Inspire Me</button>
-        </header>
+          <br /><br />
+          {this.state.loading 
+            ? (<div className='spinner' />)
+            : (
+              <button
+                className='inspire-button' 
+                onClick={this.inspire}
+              >
+                Inspire Me
+              </button>
+            )
+          }
+        </div>
+        <footer className='footer'>Copyright © PR.</footer>
       </div>
     );
   }

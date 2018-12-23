@@ -7,17 +7,24 @@ const SOURCES = [
 ]
 
 class InspireService {
-  getRandomSource () {
+  async getRandomSource () {
     const source = sample(SOURCES)
+    const details = await source.getDetails()
     return {
-      url: source.getUrl(),
+      url: details.url,
+      name: details.name,
+      disableUnfurl: details.disableUnfurl,
       type: source.type
     }
   }
 
   async inspire () {
-    const source = this.getRandomSource()
-    const result = await UnfurlService.unfurl({ url: source.url, type: source.type })
+    const source = await this.getRandomSource()
+    const result = await UnfurlService.unfurl({ 
+      url: source.url, 
+      type: source.type,
+      disableUnfurl: source.disableUnfurl
+    })
     if (!result) {
      return this.inspire() 
     }
