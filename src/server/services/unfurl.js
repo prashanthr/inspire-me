@@ -13,6 +13,8 @@ class UnfurlService {
         return this.getBasicDetails({ url, data: result })
       case 'link':
         return this.getUrl(result)
+      case 'pre-furled':
+        return url
       case 'raw':
       default:
         return result

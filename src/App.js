@@ -22,13 +22,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        <div className="App-content">
           {!this.state.img && `Loading...`}
           {this.state.img && 
             <img alt='inspire-strip' src={this.state.img} />
           }
-          <br /><br /><button onClick={this.inspire}>Inspire Me</button>
-        </header>
+          <br /><br /><button class='inspire-button' onClick={this.inspire}>Inspire Me</button>
+        </div>
       </div>
     );
   }
