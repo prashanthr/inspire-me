@@ -34,7 +34,6 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-content">
-          {/* {!this.state.img && <div className='spinner' />} */}
           {this.state.img && 
             <img 
               className='inspire-strip' 
