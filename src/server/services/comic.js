@@ -76,18 +76,6 @@ class ComicService extends SourceService {
   getSource () {
     return sample(SOURCES.filter(source => !source.disabled))
   }
-  async getUrl (source) {
-    return await source.getUrl()
-  }
-
-  async getDetails () {
-    const source = this.getSource()
-    return {
-      name: source.name,
-      url: await this.getUrl(source),
-      disableUnfurl: source.disableUnfurl
-    }
-  }
 }
 
 export default new ComicService('img')
