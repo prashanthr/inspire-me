@@ -1,11 +1,13 @@
 import UnfurlService from './unfurl'
 import ComicService from './comic'
 import QuoteService from './quote'
+import ImageService from './image'
 import { sample } from 'lodash'
 
 const SOURCES = [
   ComicService,
-  QuoteService
+  QuoteService,
+  ImageService
 ]
 
 class InspireService {
