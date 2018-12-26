@@ -9,6 +9,7 @@ class UnfurlService {
     switch (type) {
       case 'img':
       case 'image':
+      case 'comic':
        return this.getPrimaryImageUrl(result)
       case 'basic':
       case 'article':

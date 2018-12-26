@@ -78,4 +78,4 @@ class ComicService extends SourceService {
   }
 }
 
-export default new ComicService('img')
+export default new ComicService('comic')
