@@ -10,7 +10,7 @@ RUN apt-get update &&  apt-get dist-upgrade -y && apt-get clean
 # Set env
 ENV WORK_DIR=/var/www/deploy/app/
 ENV NODE_ENV=production
-ENV PORT=8080
+ENV PORT=9000
 # Workdir
 RUN mkdir -p ${WORK_DIR}
 WORKDIR ${WORK_DIR}
@@ -23,4 +23,5 @@ COPY . ${WORK_DIR}
 # Expose port
 EXPOSE ${PORT}
 # Run application
-CMD ["pm2-runtime", "start", "./ecosystem.json"]
+# CMD ["pm2-runtime", "start", "./ecosystem.json"]
+CMD ["npm", "run", "start-functions"]
