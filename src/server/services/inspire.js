@@ -6,8 +6,8 @@ import { sample } from 'lodash'
 
 const SOURCES = [
   ComicService,
-  QuoteService,
-  ImageService
+  // QuoteService,
+  // ImageService
 ]
 
 class InspireService {

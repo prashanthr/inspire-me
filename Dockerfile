@@ -2,8 +2,8 @@
 FROM node:8.14-jessie
 # Labels & metadata
 LABEL version="1.0"
-LABEL name="node-docker-bunny"
-LABEL description="This is a node docker image"
+LABEL name="inspire-me-service"
+LABEL description="This is an image for inspire me service"
 LABEL maintainer "Prashanth R <https://github.com/prashanthr>"
 # OS Upgrades & Dependencies
 RUN apt-get update &&  apt-get dist-upgrade -y && apt-get clean
