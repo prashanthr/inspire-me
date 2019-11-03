@@ -19,13 +19,18 @@ class App extends Component {
     })
   }
 
-  inspire () {
+  setLoading (value) {
     this.setState({
-      loading: true
+      loading: value
     })
+  }
+
+  inspire () {
+    this.setLoading(true)
     axios
       .get('/.netlify/functions/inspire')
       .then(res => this.updateImg(res.data.data))
+      .catch(err => this.setLoading(false))
   }
   componentWillMount () {
     this.inspire()
