@@ -7,7 +7,7 @@ class SourceService {
     try {
       return await source.getUrl()
     } catch (err) {
-      console.error(err)
+      console.error('Error getting url: ', err)
       throw err
     }
   }
