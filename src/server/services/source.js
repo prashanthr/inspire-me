@@ -4,7 +4,12 @@ class SourceService {
     this.type = type
   }
   async getUrl (source) {
-    return await source.getUrl()
+    try {
+      return await source.getUrl()
+    } catch (err) {
+      console.error('Error getting url: ', err)
+      throw err
+    }
   }
 
   async getDetails () {
