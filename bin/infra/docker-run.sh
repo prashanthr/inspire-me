@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-if [ -z $DOCKER_PORT ] then;
+if [ -z $DOCKER_PORT ]; then
   DOCKER_PORT=9000
 fi
 

@@ -8,3 +8,4 @@ if [ -z $TAG_NAME ]; then
 fi
 
 DOCKER_REPO=$DOCKER_REPO TAG_NAME=$TAG_NAME ./bin/infra/docker-build.sh
+DOCKER_REPO=$DOCKER_REPO TAG_NAME=$TAG_NAME ./bin/infra/docker-run.sh
