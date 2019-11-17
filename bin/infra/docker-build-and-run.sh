@@ -7,9 +7,7 @@ if [ -z $TAG_NAME ]; then
   TAG_NAME="v0.0.1" #$(uuidgen)
 fi
 
-# docker build and release
 NAME_TAG="$CONTAINER_NAME:$TAG_NAME"
 
 TAG=$NAME_TAG ./bin/infra/docker-build.sh
-DOCKER_USER=$DOCKER_USER TAG=$NAME_TAG ./bin/infra/docker-release.sh
-# kube build and release
+CONTAINER_NAME=$CONTAINER_NAME TAG=$NAME_TAG ./bin/infra/docker-run.sh

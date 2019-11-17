@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-echo "Building docker image with repo $DOCKER_REPO and tag name $TAG_NAME..."
-docker build --tag $DOCKER_REPO:$TAG_NAME ./
+# TAG_NAME=$DOCKER_REPO:$TAG_NAME
+echo "Building docker image with tag $TAG..."
+docker build --tag $TAG ./
