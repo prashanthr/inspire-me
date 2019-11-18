@@ -13,6 +13,7 @@ const setupRoutes = (app) => {
       const inspiration = await InspireService.inspire()
       res.send(JSON.stringify(inspiration))
     } catch (err) {
+      console.err('API Error', err)
       res.sendStatus(500)
     }
   })
