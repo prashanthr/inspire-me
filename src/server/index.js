@@ -8,4 +8,4 @@ const port = 9000
 app.use(cors())
 setupRoutes(app)
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`Inspire me app listening on port ${port}!`))
