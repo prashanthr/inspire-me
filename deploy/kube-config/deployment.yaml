@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: inspire-me
-          image: prequod/inspire-me:v0.0.1
+          image: prequod/inspire-me:v0.0.2
           ports:
             - containerPort: 9109
           imagePullPolicy: Always
