@@ -1,5 +1,5 @@
-# Node 8.14.x Image -- Alternatively can use https://github.com/keymetrics/docker-pm2/blob/master/tags/latest/jessie/Dockerfile
-FROM node:8.14-jessie
+# Node Image -- Alternatively can use https://github.com/keymetrics/docker-pm2/blob/master/tags/latest/jessie/Dockerfile
+FROM node:current
 # Labels & metadata
 LABEL version="1.0"
 LABEL name="inspire-me-service"
@@ -24,4 +24,4 @@ COPY . ${WORK_DIR}
 EXPOSE ${PORT}
 # Run application
 # CMD ["pm2-runtime", "start", "./ecosystem.json"]
-CMD ["npm", "run", "start-server"]
+CMD ["./node_modules/.bin/pm2-runtime", "start", "ecosystem.json"]

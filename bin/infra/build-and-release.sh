@@ -4,11 +4,11 @@ if [ -z $CONTAINER_NAME ]; then
 fi
 
 if [ -z $TAG_NAME ]; then 
-  TAG_NAME="v0.0.1" #$(uuidgen)
+  TAG_NAME="v0.0.2" #$(uuidgen)
 fi
 
 # docker build and release
-NAME_TAG="$CONTAINER_NAME:$TAG_NAME"
+NAME_TAG="$DOCKER_USER/$CONTAINER_NAME:$TAG_NAME"
 
 TAG=$NAME_TAG ./bin/infra/docker-build.sh
 DOCKER_USER=$DOCKER_USER TAG=$NAME_TAG ./bin/infra/docker-release.sh

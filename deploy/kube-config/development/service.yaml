@@ -7,6 +7,5 @@ spec:
     app: inspire-me
   ports:
     - port: 9000
-      targetPort: 9109
-  type: LoadBalancer
+  type: NodePort
   

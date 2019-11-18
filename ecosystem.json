@@ -1,8 +1,8 @@
 {
   "apps": [
     {
-      "name": "functions-server",
-      "script": "./bin/start.sh",
+      "name": "inspire-me",
+      "script": "npm run start-server",
       "env_production": {
       	"DEBUG": "*,-babel",
         "NODE_ENV": "production",
