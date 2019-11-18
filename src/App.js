@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import './App.css';
 
+const API_BASE_URL = process.env.NODE_ENV.toLowerCase === 'production' ? '' : 'http://localhost:9000'
+console.log('API_BASE_URL', API_BASE_URL)
 class App extends Component {
   constructor (props) {
     super(props)
@@ -28,7 +30,7 @@ class App extends Component {
   inspire () {
     this.setLoading(true)
     axios
-      .get('/.netlify/functions/inspire')
+      .get(`${API_BASE_URL}/inspire`)
       .then(res => this.updateImg(res.data.data))
       .catch(err => this.setLoading(false))
   }

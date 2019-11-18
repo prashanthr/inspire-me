@@ -17,7 +17,7 @@ spec:
           image: prequod/inspire-me:v0.0.1
           ports:
             - containerPort: 9109
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           resources:
               requests:
                 memory: 50Mi

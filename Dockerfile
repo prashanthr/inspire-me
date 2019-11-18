@@ -17,11 +17,11 @@ WORKDIR ${WORK_DIR}
 # package handling
 ADD package*.json ${WORK_DIR}
 RUN npm install --${NODE_ENV}
-RUN npm install pm2@latest -g
+# RUN npm install pm2@latest -g
 # Install App Dependencies
 COPY . ${WORK_DIR}
 # Expose port
 EXPOSE ${PORT}
 # Run application
 # CMD ["pm2-runtime", "start", "./ecosystem.json"]
-CMD ["npm", "run", "start-functions"]
+CMD ["npm", "run", "start-server"]
