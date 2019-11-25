@@ -4,7 +4,7 @@ if [ -z $CONTAINER_NAME ]; then
 fi
 
 if [ -z $TAG_NAME ]; then 
-  TAG_NAME="v0.0.1" #$(uuidgen)
+  TAG_NAME="dev" #$(uuidgen)
 fi
 
 NAME_TAG="$CONTAINER_NAME:$TAG_NAME"

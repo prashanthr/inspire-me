@@ -1,0 +1,13 @@
+  661  minikube addons enable ingress
+  662  kdkill app
+  663  kpodlist
+  664  kservicelist
+  665  kubectl get services
+  666  kubectl delete service app-service
+  667  kubectl run app --image=prequod/inspire-me:v0.0.2 --port=9000
+  668  kubectl expose deployment app --type=NodePort --name=app-service
+  669  kubectl get deployments
+  670  kubectl get services
+  671  minikube start
+  672  minikube service
+  673  minikube service app-service
