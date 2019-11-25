@@ -1,0 +1,5 @@
+# download cluster config file
+kubectl --kubeconfig="test-k8-cluster-kubeconfig.yaml" get nodes
+kubectl --kubeconfig="test-k8-cluster-kubeconfig.yaml" apply -f ./deploy/kube-config/production
+kubectl --kubeconfig="test-k8-cluster-kubeconfig.yaml" get service inspire-me
+kubectl --kubeconfig="test-k8-cluster-kubeconfig.yaml" get service inspire-me
