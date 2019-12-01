@@ -19,7 +19,7 @@ const SOURCES = [{
   disableUnfurl: true, // PRE-FURLED
   getUrl: async () => {
     const randomStripNum = random(1, 2100)
-    const res = await axios.get(`https://xkcd.now.sh/${randomStripNum}`)
+    const res = await axios.get(`https://xkcd.now.sh/?comic=${randomStripNum}`)
     return res.data.img
   }
 }, {

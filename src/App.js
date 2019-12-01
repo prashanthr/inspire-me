@@ -48,7 +48,7 @@ class App extends Component {
               src={this.state.img} 
             />
           }
-          <br /><br />
+          <br />
           {this.state.loading 
             ? (<div className='spinner' />)
             : (
@@ -56,7 +56,7 @@ class App extends Component {
                 className='inspire-button' 
                 onClick={this.inspire}
               >
-                Inspire Me
+                Haha, next!
               </button>
             )
           }
