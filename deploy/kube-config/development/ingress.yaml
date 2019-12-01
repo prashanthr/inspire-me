@@ -9,4 +9,3 @@ spec:
       - backend:
           serviceName: inspire-me
           servicePort: 9000
-          

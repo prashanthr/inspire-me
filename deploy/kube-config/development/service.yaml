@@ -8,4 +8,3 @@ spec:
   ports:
     - port: 9000
   type: NodePort
-  
