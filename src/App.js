@@ -61,7 +61,9 @@ class App extends Component {
             )
           }
         </div>
-        <footer className='footer'>Copyright © <a href='https://prashanthr.me' target='_blank'>PR.</a></footer>
+        <footer className='footer'>
+          Copyright © <a href='https://prashanthr.me' target='_blank' rel="noopener noreferrer">PR.</a>
+        </footer>
       </div>
     );
   }

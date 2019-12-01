@@ -4,7 +4,7 @@ if [ -z $CONTAINER_NAME ]; then
 fi
 
 if [ -z $TAG_NAME ]; then 
-  TAG_NAME="v0.0.2" #$(uuidgen)
+  TAG_NAME=$(./bin/infra/get-pkg-version.sh)
 fi
 
 # docker build and release
