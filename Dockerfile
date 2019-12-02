@@ -20,6 +20,8 @@ RUN npm install --${NODE_ENV}
 # RUN npm install pm2@latest -g
 # Install App Dependencies
 COPY . ${WORK_DIR}
+# Build the front end assets
+RUN npm run build-app
 # Expose port
 EXPOSE ${PORT}
 # Run application

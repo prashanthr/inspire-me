@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import './App.css';
 
-const API_BASE_URL = process.env.NODE_ENV.toLowerCase === 'production' ? '' : `http://localhost:${process.env.SERVICE_PORT || 9000}`
+const API_BASE_URL = process.env.NODE_ENV.toLowerCase === 'production' ? 'comical.site' : `http://localhost:${process.env.SERVICE_PORT || 9000}`
 console.log('API_BASE_URL', API_BASE_URL, 'SERVICE_PORT', process.env.SERVICE_PORT)
 class App extends Component {
   constructor (props) {
@@ -30,7 +30,7 @@ class App extends Component {
   inspire () {
     this.setLoading(true)
     axios
-      .get(`${API_BASE_URL}/inspire`)
+      .get(`${API_BASE_URL}/api/inspire`)
       .then(res => this.updateImg(res.data.data))
       .catch(err => this.setLoading(false))
   }
