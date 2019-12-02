@@ -8,9 +8,12 @@
     "@babel/node": "^7.7.0",
     "@babel/preset-env": "^7.7.1",
     "axios": "^0.18.1",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
+    "http": "^0.0.0",
     "moment": "^2.23.0",
     "netlify-lambda": "^1.1.0",
+    "pm2": "^4.1.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1",
@@ -20,10 +23,11 @@
     "start-app": "react-scripts start",
     "start-functions": "netlify-lambda serve ./src/server/functions",
     "start-server": "babel-node ./src/server/index.js",
-    "build": "yarn build-functions && yarn build-app",
-    "buildp": "run-p build-**",
     "build-app": "react-scripts build",
     "build-functions": "netlify-lambda build ./src/server/functions",
+    "dock-build-and-run": "./bin/infra/docker-build-and-run.sh",
+    "build-and-run": "./bin/infra/build-and-run.sh",
+    "build-and-release": "./bin/infra/build-and-release.sh && TAG_NAME=latest ./bin/infra/build-and-release.sh",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "release": "standard-version"
@@ -38,9 +42,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "babel-loader": "^8.0.4",
     "http-proxy-middleware": "^0.19.1",
-    "npm-run-all": "^4.1.5",
     "standard-version": "^4.4.0"
   }
 }

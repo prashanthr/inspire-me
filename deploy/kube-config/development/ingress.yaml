@@ -1,0 +1,11 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: inspire-me-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          serviceName: inspire-me
+          servicePort: 9000

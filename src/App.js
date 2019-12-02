@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import './App.css';
 
+const API_BASE_URL = process.env.NODE_ENV.toLowerCase() === 'production' ? 'http://comical.site' : `http://localhost:${process.env.SERVICE_PORT || 9000}`
+console.log('API_BASE_URL', API_BASE_URL, 'SERVICE_PORT', process.env.SERVICE_PORT)
 class App extends Component {
   constructor (props) {
     super(props)
@@ -28,7 +30,7 @@ class App extends Component {
   inspire () {
     this.setLoading(true)
     axios
-      .get('/.netlify/functions/inspire')
+      .get(`${API_BASE_URL}/api/inspire`)
       .then(res => this.updateImg(res.data.data))
       .catch(err => this.setLoading(false))
   }
@@ -46,7 +48,7 @@ class App extends Component {
               src={this.state.img} 
             />
           }
-          <br /><br />
+          <br />
           {this.state.loading 
             ? (<div className='spinner' />)
             : (
@@ -54,12 +56,14 @@ class App extends Component {
                 className='inspire-button' 
                 onClick={this.inspire}
               >
-                Inspire Me
+                Haha, next!
               </button>
             )
           }
         </div>
-        <footer className='footer'>Copyright © PR.</footer>
+        <footer className='footer'>
+          Copyright © <a href='https://prashanthr.me' target='_blank' rel="noopener noreferrer">PR.</a>
+        </footer>
       </div>
     );
   }
