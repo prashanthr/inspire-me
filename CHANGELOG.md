@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/prashanthr/inspire-me/compare/v0.3.1...v0.4.0) (2019-12-09)
+
+
+### Features
+
+* **comics:** Add more comics ([#21](https://github.com/prashanthr/inspire-me/issues/21)) ([052d05e](https://github.com/prashanthr/inspire-me/commit/052d05e))
+
+
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/prashanthr/inspire-me/compare/v0.3.0...v0.3.1) (2019-12-02)
 
