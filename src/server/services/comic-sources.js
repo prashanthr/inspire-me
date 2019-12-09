@@ -6,6 +6,11 @@ const randomDate = (start, end) => {
   return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()))
 }
 
+const getGOComicsUrl = ({ date, prefix, dateFormat }) => {
+  const formattedDt = moment(date).format(dateFormat || 'YYYY/MM/DD')
+  return `https://www.gocomics.com/${prefix}/${formattedDt}`
+}
+
 const sources = [{
   name: 'dilbert',
   getUrl: async () => {
@@ -24,9 +29,11 @@ const sources = [{
 }, {
   name: 'the-awkward-yeti',
   getUrl: async () => {
-    const dt = randomDate(new Date(2014, 9, 8), new Date())
-    const formattedDt = moment(dt).format('YYYY/MM/DD')
-    return `https://www.gocomics.com/the-awkward-yeti/${formattedDt}`
+    const date = randomDate(new Date(2014, 9, 8), new Date())
+    return getGOComicsUrl({ 
+      date,
+      prefix: 'the-awkward-yeti'
+    })
   }
 }, {
   name: 'devhumor',
@@ -37,51 +44,65 @@ const sources = [{
 }, {
   name: 'calvin',
   getUrl: async () => {
-    const dt = randomDate(new Date(2012, 0, 1), new Date())
-    const formattedDt = moment(dt).format('YYYY/MM/DD')
-    return `https://www.gocomics.com/calvinandhobbes/${formattedDt}`
+    const date = randomDate(new Date(2012, 0, 1), new Date())
+    return getGOComicsUrl({
+      date,
+      prefix: 'calvinandhobbes'
+    })
   }
 },{ 
   name: 'beardo',
   getUrl: async () => {
-    const dt = randomDate(new Date(2011, 3, 1), new Date())
-    const formattedDt = moment(dt).format('YYYY/MM/DD')
-    return `https://www.gocomics.com/beardo/${formattedDt}`
+    const date = randomDate(new Date(2011, 3, 1), new Date())
+    return getGOComicsUrl({
+      date,
+      prefix: 'beardo'
+    })
   }
 }, {
   name: 'breakofday',
   getUrl: async () => {
-    const dt = randomDate(new Date(2011, 8, 29), new Date())
-    const formattedDt = moment(dt).format('YYYY/MM/DD')
-    return `https://www.gocomics.com/break-of-day/${formattedDt}`
+    const date = randomDate(new Date(2011, 8, 29), new Date())
+    return getGOComicsUrl({
+      date,
+      prefix: 'break-of-day'
+    })
   }
 }, {
   name: 'thedailydrawing',
   getUrl: async () => {
-    const dt = randomDate(new Date(2015, 1, 19), new Date())
-    const formattedDt = moment(dt).format('YYYY/MM/DD')
-    return `https://www.gocomics.com/the-daily-drawing/${formattedDt}`
+    const date = randomDate(new Date(2015, 1, 19), new Date())
+    return getGOComicsUrl({
+      date,
+      prefix: 'the-daily-drawing'
+    })
   }
 }, {
   name: 'liz-climo-cartoons',
   getUrl: async () => {
-    const dt = randomDate(new Date(2018, 3, 26), new Date())
-    const formattedDt = moment(dt).format('YYYY/MM/DD')
-    return `https://www.gocomics.com/liz-climo-cartoons/${formattedDt}`
+    const date = randomDate(new Date(2018, 3, 26), new Date())
+    return getGOComicsUrl({
+      date,
+      prefix: 'liz-climo-cartoons'
+    })
   }
 }, {
   name: 'garfield',
   getUrl: async () => {
-    const dt = randomDate(new Date(1978, 6, 19), new Date())
-    const formattedDt = moment(dt).format('YYYY/MM/DD')
-    return `https://www.gocomics.com/garfield/${formattedDt}`
+    const date = randomDate(new Date(1978, 6, 19), new Date())
+    return getGOComicsUrl({
+      date,
+      prefix: 'garfield'
+    })
   }
 }, {
   name: 'lunarbaboon',
   getUrl: async () => {
-    const dt = randomDate(new Date(2015, 11, 2), new Date())
-    const formattedDt = moment(dt).format('YYYY/MM/DD')
-    return `https://www.gocomics.com/lunarbaboon/${formattedDt}`
+    const date = randomDate(new Date(2015, 11, 2), new Date())
+    return getGOComicsUrl({
+      date,
+      prefix: 'lunarbaboon'
+    })
   }
 }]
 
