@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.1"></a>
+## [0.4.1](https://github.com/prashanthr/inspire-me/compare/v0.4.0...v0.4.1) (2019-12-09)
+
+
+### Bug Fixes
+
+* **seo, page:** Fix favicon, index.html ([#22](https://github.com/prashanthr/inspire-me/issues/22)) ([8086fbc](https://github.com/prashanthr/inspire-me/commit/8086fbc))
+
+
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/prashanthr/inspire-me/compare/v0.3.1...v0.4.0) (2019-12-09)
 
