@@ -3,6 +3,7 @@ import Image from './client/components/Image'
 import Button from './client/components/Button'
 import Footer from './client/components/Footer'
 import Loader from './client/components/Loader'
+import FlipCard from './client/components/FlipImageCard'
 import config from './client/config'
 import axios from 'axios'
 import './App.css'
@@ -14,15 +15,17 @@ class App extends Component {
   constructor (props) {
     super(props)
     this.inspire = this.inspire.bind(this)
-    this.updateImg = this.updateImg.bind(this)
+    this.updateContext = this.updateContext.bind(this)
     this.state = {
+      source: null,
       img: null,
       loading: true
     }
   }
-  updateImg (data) {
+  updateContext (context) {
     this.setState({ 
-      img: data,
+      img: context.data,
+      source: context.source,
       loading: false
     })
   }
@@ -37,7 +40,7 @@ class App extends Component {
     this.setLoading(true)
     axios
       .get(`${API_BASE_URL}/api/inspire`)
-      .then(res => this.updateImg(res.data.data))
+      .then(res => this.updateContext(res.data))
       .catch(err => this.setLoading(false))
   }
   componentWillMount () {
@@ -48,10 +51,19 @@ class App extends Component {
       <div className='App'>
         <div className='App-content'>
           {this.state.img && 
-            <Image
-              className='inspire-strip' 
-              alt='inspire-strip' 
-              src={this.state.img} 
+            <FlipCard
+              frontComponent={<Image
+                className='inspire-strip' 
+                alt='inspire-strip' 
+                src={this.state.img}
+              />}
+              rearComponent={(
+                <div>
+                  Source: {this.state.source.name}
+                  <br />
+                  Url: {this.state.source.url}
+                </div>
+              )}
             />
           }
           <br />
