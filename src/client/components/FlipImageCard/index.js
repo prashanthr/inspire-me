@@ -2,12 +2,12 @@ import React from 'react'
 import './index.css'
 
 const FlipImageCard = ({ className, frontComponent, rearComponent }) => (
-  <div class='flip-card-img'>
-    <div class='flip-card-inner'>
-      <div class='flip-card-front'>
+  <div className={`flip-card-img ${className}`}>
+    <div className='flip-card-inner'>
+      <div className='flip-card-front'>
         {frontComponent}
       </div>
-      <div class='flip-card-rear'>
+      <div className='flip-card-rear'>
         {rearComponent}
       </div>
     </div>
