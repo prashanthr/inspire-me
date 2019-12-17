@@ -1,0 +1,32 @@
+.inspire-button {
+  font-family: 'Lato', 'Lucida Grande', 'Lucida Sans Unicode', Tahoma, Sans-Serif;
+    -webkit-appearance: none;
+    font-size: 1rem;
+    text-shadow: none;
+    line-height: 1.2;
+    display: inline-block;
+    padding: 10px 16px;
+    margin: 0 10px 0 0;
+    position: relative;
+    border-radius: 4px;
+    border: 3px solid transparent;
+    background: #4c4f5a;
+    color: white;
+    cursor: pointer;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-decoration: none !important;
+    text-align: center;
+    font-weight: 700 !important;
+    background: #47cf73;
+    color: #000;
+}
+
+.inspire-button:hover {
+  background: #2fb45a;
+  cursor: pointer;
+}
+
+.inspire-button:active {
+  background: none;
+}

@@ -1,9 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import Image from './client/components/Image'
+import Button from './client/components/Button'
+import Footer from './client/components/Footer'
+import Loader from './client/components/Loader'
+import config from './client/config'
 import axios from 'axios'
-import './App.css';
+import './App.css'
 
-const API_BASE_URL = process.env.NODE_ENV.toLowerCase() === 'production' ? 'http://comical.site' : `http://localhost:${process.env.SERVICE_PORT || 9000}`
-console.log('API_BASE_URL', API_BASE_URL, 'SERVICE_PORT', process.env.SERVICE_PORT)
+const { apiBaseUrl, servicePort } = config
+const API_BASE_URL = `${apiBaseUrl}:${servicePort}`
+
 class App extends Component {
   constructor (props) {
     super(props)
@@ -39,10 +45,10 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <div className="App-content">
+      <div className='App'>
+        <div className='App-content'>
           {this.state.img && 
-            <img 
+            <Image
               className='inspire-strip' 
               alt='inspire-strip' 
               src={this.state.img} 
@@ -50,23 +56,23 @@ class App extends Component {
           }
           <br />
           {this.state.loading 
-            ? (<div className='spinner' />)
+            ? <Loader className='spinner' />
             : (
-              <button
+              <Button
+                text='Haha, next!'
                 className='inspire-button' 
                 onClick={this.inspire}
-              >
-                Haha, next!
-              </button>
+              />
             )
           }
         </div>
-        <footer className='footer'>
-          Copyright © PR.
-        </footer>
+        <Footer 
+          className='footer'
+          text='Copyright © PR.'
+        />
       </div>
     );
   }
 }
 
-export default App;
+export default App
