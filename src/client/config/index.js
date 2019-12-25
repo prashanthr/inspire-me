@@ -1,11 +1,9 @@
 const isProd = process.env.NODE_ENV.toLowerCase() === 'production'
-
-const baseConfig = {
-  servicePort: 9000
-}
+const localPort = process.env.SERVICE_PORT || 9000
 
 const localConfig = {
-  apiBaseUrl: 'http://localhost'
+  apiBaseUrl: `http://localhost:${localPort}`,
+  servicePort: 9000
 }
 
 const prodConfig = {
@@ -15,7 +13,6 @@ const prodConfig = {
 const overrides = isProd ? prodConfig : localConfig
 
 const config = {
-  ...baseConfig,
   ...overrides
 }
 

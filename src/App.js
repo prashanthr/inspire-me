@@ -7,8 +7,7 @@ import config from './client/config'
 import axios from 'axios'
 import './App.css'
 
-const { apiBaseUrl, servicePort } = config
-const API_BASE_URL = `${apiBaseUrl}:${servicePort}`
+const API_BASE_URL = `${config.apiBaseUrl}`
 
 class App extends Component {
   constructor (props) {
