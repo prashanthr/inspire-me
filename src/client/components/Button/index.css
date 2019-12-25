@@ -30,3 +30,16 @@
 .inspire-button:active {
   background: none;
 }
+
+.info-button {
+  font-size: 15px;
+  font-style: italic;
+  color: white;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.info-button:focus { 
+  outline: none; 
+}
