@@ -1,22 +1,31 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import Image from './client/components/Image'
+import Button from './client/components/Button'
+import Footer from './client/components/Footer'
+import Loader from './client/components/Loader'
+import config from './client/config'
 import axios from 'axios'
-import './App.css';
+import './App.css'
 
-const API_BASE_URL = process.env.NODE_ENV.toLowerCase() === 'production' ? 'http://comical.site' : `http://localhost:${process.env.SERVICE_PORT || 9000}`
-console.log('API_BASE_URL', API_BASE_URL, 'SERVICE_PORT', process.env.SERVICE_PORT)
+const { apiBaseUrl, servicePort } = config
+const API_BASE_URL = `${apiBaseUrl}:${servicePort}`
+
 class App extends Component {
   constructor (props) {
     super(props)
     this.inspire = this.inspire.bind(this)
-    this.updateImg = this.updateImg.bind(this)
+    this.updateContext = this.updateContext.bind(this)
+    this.showSourceModal = this.showSourceModal.bind(this)
     this.state = {
+      source: null,
       img: null,
       loading: true
     }
   }
-  updateImg (data) {
+  updateContext (context) {
     this.setState({ 
-      img: data,
+      img: context.data,
+      source: context.source,
       loading: false
     })
   }
@@ -27,11 +36,20 @@ class App extends Component {
     })
   }
 
+  showSourceModal () {
+    alert(`
+      Info:
+      --------------------------------
+      Source: ${this.state.source.name}
+      Url: ${this.state.source.url}
+    `)
+  }
+
   inspire () {
     this.setLoading(true)
     axios
       .get(`${API_BASE_URL}/api/inspire`)
-      .then(res => this.updateImg(res.data.data))
+      .then(res => this.updateContext(res.data))
       .catch(err => this.setLoading(false))
   }
   componentWillMount () {
@@ -39,34 +57,42 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <div className="App-content">
+      <div className='App'>
+        <div className='App-content'>
           {this.state.img && 
-            <img 
+            <Image
               className='inspire-strip' 
               alt='inspire-strip' 
-              src={this.state.img} 
+              src={this.state.img}
             />
           }
           <br />
           {this.state.loading 
-            ? (<div className='spinner' />)
+            ? <Loader className='spinner' />
             : (
-              <button
-                className='inspire-button' 
-                onClick={this.inspire}
-              >
-                Haha, next!
-              </button>
+              <div>
+                <Button
+                  text='Haha, next!'
+                  className='inspire-button' 
+                  onClick={this.inspire}
+                />
+                <br />
+                <Button
+                  text={'View Source'}
+                  className='info-button' 
+                  onClick={this.showSourceModal}
+                />
+              </div>
             )
           }
         </div>
-        <footer className='footer'>
-          Copyright © PR.
-        </footer>
+        <Footer 
+          className='footer'
+          text='Copyright © PR.'
+        />
       </div>
     );
   }
 }
 
-export default App;
+export default App
