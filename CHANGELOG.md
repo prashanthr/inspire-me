@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.2"></a>
+## [0.5.2](https://github.com/prashanthr/inspire-me/compare/v0.5.1...v0.5.2) (2019-12-27)
+
+
+### Bug Fixes
+
+* **img:** add responsive class to component ([#24](https://github.com/prashanthr/inspire-me/issues/24)) ([5fd0589](https://github.com/prashanthr/inspire-me/commit/5fd0589))
+
+
+
 <a name="0.5.1"></a>
 ## [0.5.1](https://github.com/prashanthr/inspire-me/compare/v0.5.0...v0.5.1) (2019-12-25)
 
