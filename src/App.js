@@ -37,8 +37,8 @@ class App extends Component {
 
   showSourceModal () {
     alert(`
-      Info:
-      --------------------------------
+      Source Info:
+      ----------------------------------------------------------------
       Source: ${this.state.source.name}
       Url: ${this.state.source.url}
     `)
@@ -58,6 +58,7 @@ class App extends Component {
     return (
       <div className='App'>
         <div className='App-content'>
+          <h2>Kinda Comical</h2>
           {this.state.img && 
             <Image
               className='inspire-strip' 
