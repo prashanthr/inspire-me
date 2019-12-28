@@ -104,6 +104,54 @@ const sources = [{
       prefix: 'lunarbaboon'
     })
   }
+}, {
+  name: 'commitstrip',
+  // disableUnfurl: true, // PRE-FURLED
+  disabled: true,
+  getUrl: async () => {
+    let unfurlResult = 'https://www.commitstrip.com'
+    /*
+    for (let i = 0; unfurlResult === 'https://www.commitstrip.com'; i++) {
+      const date = randomDate(new Date(2014, 1, 1), new Date())
+      const formattedDt = moment(date).format('YYYY/MM/DD')
+      const ogUrl = `https://www.commitstrip.com/en/${formattedDt}`  
+      unfurlResult = await UnfurlService.unfurl({
+        type: 'link',
+        url: ogUrl,
+        disableUnfurl: false
+      })
+      console.log('ogUrl', ogUrl, 'unfurlRes', unfurlResult)
+    }
+    */
+    return unfurlResult
+  }
+}, {
+  name: 'brevity',
+  getUrl: async () => {
+    const date = randomDate(new Date(2005, 1, 3), new Date())
+    return getGOComicsUrl({
+      date,
+      prefix: 'brevity'
+    })
+  }
+}, {
+  name: 'fminus',
+  getUrl: async () => {
+    const date = randomDate(new Date(2005, 5, 10), new Date())
+    return getGOComicsUrl({
+      date,
+      prefix: 'fminus'
+    })
+  }
+}, {
+  name: 'poochcafe',
+  getUrl: async () => {
+    const date = randomDate(new Date(2003, 4, 27), new Date())
+    return getGOComicsUrl({
+      date,
+      prefix: 'poochcafe'
+    })
+  }
 }]
 
 export default sources

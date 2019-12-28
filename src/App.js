@@ -58,7 +58,7 @@ class App extends Component {
     return (
       <div className='App'>
         <div className='App-content'>
-          <h2>Kinda Comical</h2>
+          <h3>Kinda Comical</h3>
           {this.state.img && 
             <Image
               className='inspire-strip' 
