@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/prashanthr/inspire-me/compare/v0.5.3...v0.6.0) (2019-12-28)
+
+
+### Features
+
+* **comics:** Add pooch cafe, fminus, brevity ([#26](https://github.com/prashanthr/inspire-me/issues/26)) ([77e876a](https://github.com/prashanthr/inspire-me/commit/77e876a))
+
+
+
 <a name="0.5.3"></a>
 ## [0.5.3](https://github.com/prashanthr/inspire-me/compare/v0.5.2...v0.5.3) (2019-12-28)
 
