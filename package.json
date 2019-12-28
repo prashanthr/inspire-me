@@ -27,7 +27,7 @@
     "build-functions": "netlify-lambda build ./src/server/functions",
     "dock-build-and-run": "./bin/infra/docker-build-and-run.sh",
     "build-and-run": "./bin/infra/build-and-run.sh",
-    "build-and-release": "./bin/infra/build-and-release.sh && TAG_NAME=latest ./bin/infra/build-and-release.sh",
+    "build-and-release": "TAG_NAME=latest ./bin/infra/build-and-release.sh",
     "test": "babel-node ./test/server/unfurl.js",
     "eject": "react-scripts eject",
     "release": "standard-version"
