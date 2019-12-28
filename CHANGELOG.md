@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.3"></a>
+## [0.5.3](https://github.com/prashanthr/inspire-me/compare/v0.5.2...v0.5.3) (2019-12-28)
+
+
+### Bug Fixes
+
+* **seo:** Add seo specific meta tags to index ([#25](https://github.com/prashanthr/inspire-me/issues/25)) ([cba51fe](https://github.com/prashanthr/inspire-me/commit/cba51fe))
+
+
+
 <a name="0.5.2"></a>
 ## [0.5.2](https://github.com/prashanthr/inspire-me/compare/v0.5.1...v0.5.2) (2019-12-27)
 
