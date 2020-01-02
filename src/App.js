@@ -3,6 +3,7 @@ import Image from './client/components/Image'
 import Button from './client/components/Button'
 import Footer from './client/components/Footer'
 import Loader from './client/components/Loader'
+import FlipImage from './client/components/FlipImageCard'
 import config from './client/config'
 import axios from 'axios'
 import './App.css'
@@ -60,10 +61,13 @@ class App extends Component {
         <div className='App-content'>
           <h3>Kinda Comical</h3>
           {this.state.img && 
-            <Image
-              className='inspire-strip' 
-              alt='inspire-strip' 
-              src={this.state.img}
+            <FlipImage
+              frontComponent={<Image
+                className='inspire-strip' 
+                alt='inspire-strip' 
+                src={this.state.img}
+              />}
+              rearComponent={<div>Hello World</div>}
             />
           }
           <br />
