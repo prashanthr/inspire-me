@@ -1,7 +1,5 @@
 comical.site
 
-email prashanthrdev+caddy@gmail.com
-
+acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
+email prashanthrdev+caddytest@gmail.com
 root * /var/www/deploy/app/
-file_server
-

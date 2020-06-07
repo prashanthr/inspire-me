@@ -1,5 +1,5 @@
 # Node Image -- Alternatively can use https://github.com/keymetrics/docker-pm2/blob/master/tags/latest/jessie/Dockerfile
-FROM node:current
+FROM node:current AS base
 # Labels & metadata
 LABEL version="caddy"
 LABEL name="comica-site-caddy"
@@ -9,7 +9,7 @@ LABEL maintainer "Prashanth R <https://github.com/prashanthr>"
 RUN apt-get update &&  apt-get dist-upgrade -y && apt-get clean
 # Install Yarn
 RUN npm install -g yarn
-# Set env
+# Set envs
 ENV WORK_DIR=/var/www/deploy/app/
 ENV NODE_ENV=production
 ENV PORT=9000
@@ -23,10 +23,11 @@ RUN yarn --${NODE_ENV}
 COPY . ${WORK_DIR}
 # Build the front end assets
 RUN yarn build-app
+# Caddy for HTTPS and certificates
+FROM caddy/caddy:alpine AS final
+COPY ./Caddyfile /etc/caddy/Caddyfile
+COPY --from=base ${WORK_DIR} ${WORK_DIR}
 # Run application
 CMD ["./node_modules/.bin/pm2-runtime", "start", "./ecosystem.json"]
-# Caddy for HTTPS and certificates
-FROM caddy/caddy:alpine
-COPY ./Caddyfile /etc/caddy/Caddyfile
 # Expose port
 EXPOSE ${PORT}
