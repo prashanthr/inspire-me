@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: comical-site
-  name: comical-site
+  namespace: comical-site-caddy
+  name: comical-site-caddy
 spec:
   selector:
-    app: comical-site
+    app: comical-site-caddy
   ports:
     - port: 80
       targetPort: 9000

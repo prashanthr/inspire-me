@@ -1,0 +1,4 @@
+# download cluster config file
+
+kubectl --kubeconfig="athenas-cluster-kubeconfig.yaml" create namespace comical-site-caddy
+kubectl --kubeconfig="athenas-cluster-kubeconfig.yaml" apply -f ./deploy/kube-config/production-caddy

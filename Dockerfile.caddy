@@ -1,9 +1,9 @@
 # Node Image -- Alternatively can use https://github.com/keymetrics/docker-pm2/blob/master/tags/latest/jessie/Dockerfile
 FROM node:current
 # Labels & metadata
-LABEL version="latest"
-LABEL name="inspire-me-service"
-LABEL description="This is an image for inspire me service"
+LABEL version="caddy"
+LABEL name="comica-site-caddy"
+LABEL description="This is an image for comical site app"
 LABEL maintainer "Prashanth R <https://github.com/prashanthr>"
 # OS Upgrades & Dependencies
 RUN apt-get update &&  apt-get dist-upgrade -y && apt-get clean
@@ -25,5 +25,8 @@ COPY . ${WORK_DIR}
 RUN yarn build-app
 # Run application
 CMD ["./node_modules/.bin/pm2-runtime", "start", "./ecosystem.json"]
+# Caddy for HTTPS and certificates
+FROM caddy/caddy:alpine
+COPY ./Caddyfile /etc/caddy/Caddyfile
 # Expose port
 EXPOSE ${PORT}
