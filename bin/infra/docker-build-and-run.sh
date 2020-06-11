@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 if [ -z $CONTAINER_NAME ]; then 
-  CONTAINER_NAME="inspire-me"
+  CONTAINER_NAME="comical-site"
 fi
 
 if [ -z $TAG_NAME ]; then 

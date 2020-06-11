@@ -2,14 +2,18 @@
 FROM node:current
 # Labels & metadata
 LABEL version="latest"
-LABEL name="inspire-me-service"
-LABEL description="This is an image for inspire me service"
+LABEL name="comical-site"
+LABEL description="This is an image for comical site app"
 LABEL maintainer "Prashanth R <https://github.com/prashanthr>"
 # OS Upgrades & Dependencies
-RUN apt-get update &&  apt-get dist-upgrade -y && apt-get clean
+RUN apt-get update && apt-get dist-upgrade -y && apt-get clean
+# Caddy for https & certificates
+RUN apt-get install apt-utils apt-transport-https ca-certificates --yes
+RUN echo "deb [trusted=yes] https://apt.fury.io/caddy/ /" | tee -a /etc/apt/sources.list.d/caddy-fury.list
+RUN apt-get update && apt-get install caddy  --yes
 # Install Yarn
 RUN npm install -g yarn
-# Set env
+# Set envs
 ENV WORK_DIR=/var/www/deploy/app/
 ENV NODE_ENV=production
 ENV PORT=9000
@@ -18,12 +22,16 @@ RUN mkdir -p ${WORK_DIR}
 WORKDIR ${WORK_DIR}
 # package handling
 ADD package*.json ${WORK_DIR}
+ADD yarn.lock ${WORK_DIR}
 RUN yarn --${NODE_ENV}
 # Install App Dependencies
 COPY . ${WORK_DIR}
+RUN ls -la ${WORK_DIR}
 # Build the front end assets
 RUN yarn build-app
-# Run application
+# Copy caddyfile for service
+COPY ./Caddyfile /etc/caddy/Caddyfile
+# Run service
 CMD ["./node_modules/.bin/pm2-runtime", "start", "./ecosystem.json"]
 # Expose port
 EXPOSE ${PORT}
