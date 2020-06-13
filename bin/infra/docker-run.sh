@@ -4,4 +4,4 @@ if [ -z $DOCKER_PORT ]; then
 fi
 
 echo "Running docker container with tag $TAG and name $CONTAINER_NAME at port $DOCKER_PORT..."
-docker run  --name $CONTAINER_NAME -p $DOCKER_PORT:$DOCKER_PORT --rm $TAG
+docker run  --name $CONTAINER_NAME -p $DOCKER_PORT:$DOCKER_PORT -p 80:$DOCKER_PORT -p 443:$DOCKER_PORT --rm $TAG

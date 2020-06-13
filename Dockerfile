@@ -4,9 +4,9 @@ FROM node:current AS base
 LABEL version="caddy"
 LABEL name="comical-site"
 LABEL description="This is an image for comical site app"
-LABEL maintainer "Prashanth R <https://github.com/prashanthr>"
+LABEL maintainer="Prashanth R <https://github.com/prashanthr>"
 # OS Upgrades & Dependencies
-RUN apt-get update && apt-get dist-upgrade -y && apt-get clean
+RUN apt-get update && apt-get dist-upgrade -y && apt-get install apt-utils -y && apt-get clean
 # Install Yarn
 RUN npm install -g yarn
 # Set envs
@@ -36,14 +36,19 @@ ENV PORT=9000
 # Copy caddyfile for service
 COPY ./Caddyfile /etc/caddy/Caddyfile
 # OS Upgrades & Dependencies
-RUN apt-get update && apt-get dist-upgrade -y && apt-get clean
+RUN apk update && apk upgrade -f
+# Workdir
+RUN mkdir -p ${WORK_DIR}
+WORKDIR ${WORK_DIR}
 # Copy files from base
 COPY --from=base ${WORK_DIR} ${WORK_DIR}
 # Install node, npm, yarn again
-RUN apt-get install nodejs npm -y && nodejs -v
+RUN apk add nodejs npm -f --no-cache
 RUN npm install -g yarn
 # Yarn install
 RUN yarn --${NODE_ENV}
+# Start Caddy
+RUN caddy start
 # Run service
 CMD ["./node_modules/.bin/pm2-runtime", "start", "./ecosystem.json"]
 # Expose port
