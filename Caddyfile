@@ -1,5 +1,8 @@
-localhost:9000
+:9000
 
-acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
-email prashanthrdev+caddytest@gmail.com
 root * /var/www/deploy/app
+
+{
+  acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
+  email prashanthrdev+caddytest@gmail.com
+}

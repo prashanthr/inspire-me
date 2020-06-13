@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: comical-site-caddy
-  name: comical-site-caddy
+  namespace: comical-site
+  name: comical-site-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: comical-site-caddy
+      app: comical-site-app
   template:
     metadata:
       labels:
-        app: comical-site-caddy
+        app: comical-site-app
     spec:
       containers:
-        - name: comical-site-caddy
+        - name: comical-site-app
           image: prequod/comical-site:caddy
           ports:
             - containerPort: 9000
