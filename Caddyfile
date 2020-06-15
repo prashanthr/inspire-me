@@ -2,5 +2,5 @@
   acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
   email prashanthrdev+caddytest@gmail.com
 }
-:80
+comical.site
 root * /var/www/deploy/app

@@ -1,0 +1,2 @@
+:80
+root * /var/www/deploy/app
