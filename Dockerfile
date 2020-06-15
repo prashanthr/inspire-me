@@ -48,7 +48,7 @@ RUN npm install -g yarn
 # Yarn install
 RUN yarn --${NODE_ENV}
 # Start Caddy
-RUN caddy start
+RUN caddy start | tee ${WORK_DIR}/caddy.log
 # Run service
 CMD ["./node_modules/.bin/pm2-runtime", "start", "./ecosystem.json"]
 # Expose port
