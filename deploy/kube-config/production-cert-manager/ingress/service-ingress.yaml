@@ -1,17 +1,17 @@
-# apiVersion: extensions/v1beta1
-apiVersion: networking.k8s.io/v1beta1
+# echo_ingress.yaml
+apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  namespace: comical-site-062020
+  namespace: comical-site
   name: comical-site-ingress
   annotations:
-    kubernetes.io/ingress.class: nginx
-    certmanager.k8s.io/cluster-issuer: letsencrypt-staging
+    kubernetes.io/ingress.class: "nginx"    
+    cert-manager.io/cluster-issuer: "letsencrypt-staging"
 spec:
   tls:
   - hosts:
     - comical.site
-    secretName: comical-site-crt
+    secretName: letsencrypt-staging-2
   rules:
   - host: comical.site
     http:
