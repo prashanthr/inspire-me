@@ -11,7 +11,7 @@ spec:
   tls:
   - hosts:
     - comical.site
-    secretName: letsencrypt-staging-2
+    secretName: letsencrypt-staging
   rules:
   - host: comical.site
     http:

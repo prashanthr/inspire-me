@@ -67,10 +67,13 @@ kubectl --namespace ingress-nginx  get services
 # Nginx Ingress
 # kubectl apply -f $KUBE_DEPLOY_BASE_PATH/ingress/nginx-ingress.yaml
 
-# Setup DNS A record
+# Setup DNS A record to point to the do ingress
+# WAIT TO VERIFY NGINX 503
 
 # Service Ingress
 kubectl apply -f $KUBE_DEPLOY_BASE_PATH/ingress/service-ingress-initial.yaml
+
+# Verify by curling site to get HTTP response
 
 # Cert manager
 kubectl create namespace cert-manager
@@ -84,7 +87,6 @@ helm install \
 # Test cert manager
 kubectl apply -f $KUBE_DEPLOY_BASE_PATH/cert-manager/test-cert-manager.yaml
 kubectl describe certificate -n cert-manager-test
-
 # If Ok
 kubectl delete -f $KUBE_DEPLOY_BASE_PATH/cert-manager/test-cert-manager.yaml
 
@@ -98,6 +100,16 @@ kubectl apply -f $KUBE_DEPLOY_BASE_PATH/ingress/service-ingress.yaml
 kubectl describe certificate letsencrypt-staging --namespace $KUBE_NAMESPACE
 # kubectl --namespace $KUBE_NAMESPACE describe certificaterequest [letsencrypt-staging-3376255093] 
 
+# Check orders
+kubectl --namespace $KUBE_NAMESPACE describe orders
+
 # Check challenges
 kubectl get challenges --namespace $KUBE_NAMESPACE
 # kubectl --namespace $KUBE_NAMESPACE describe challenge letsencrypt-staging-3376255093-3425677048-1267864671 
+
+# Bug?
+# kubectl apply -f $KUBE_DEPLOY_BASE_PATH/ingress/updated-nginx-ingress.yaml
+
+# DESTROY
+kubectl delete namespace $KUBE_NAMESPACE
+kubectl delete namespace ingress-nginx
