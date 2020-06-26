@@ -13,7 +13,7 @@ server {
       #proxy_cache_bypass $http_upgrade;
   }
 
-  location ^~ /.well-known {
+  location ^~ /.well-known/acme-challenge/  {
     allow all;
     root  /var/www/deploy/app/;
   }
