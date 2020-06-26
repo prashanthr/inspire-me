@@ -35,6 +35,6 @@ RUN nginx -t
 # Run application
 CMD ["./node_modules/.bin/pm2-runtime", "start", "ecosystem.json"]
 # Reload NGINX
-RUN service nginx restart
+RUN service nginx start && service nginx reload
 # Expose app to the world
 EXPOSE ${NGINX_PORT}
