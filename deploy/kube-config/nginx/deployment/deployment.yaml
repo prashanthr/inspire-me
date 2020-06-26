@@ -9,7 +9,7 @@ spec:
     app: comical-site-app
   ports:
   - port: 80
-    targetPort: 6000
+    targetPort: 9005
   # - port: 443
   #   targetPort: 9000
 ---
@@ -33,4 +33,4 @@ spec:
         image: prequod/comical-site:nginx
         imagePullPolicy: Always
         ports:
-        - containerPort: 6000
+        - containerPort: 9005
