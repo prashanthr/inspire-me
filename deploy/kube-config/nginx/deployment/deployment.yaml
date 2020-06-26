@@ -4,11 +4,14 @@ metadata:
   namespace: comical-site
   name: comical-site-app
 spec:
+  type: LoadBalancer
   selector:
     app: comical-site-app
   ports:
   - port: 80
-    targetPort: 9000
+    targetPort: 6000
+  # - port: 443
+  #   targetPort: 9000
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -30,4 +33,4 @@ spec:
         image: prequod/comical-site:nginx
         imagePullPolicy: Always
         ports:
-        - containerPort: 9000
+        - containerPort: 6000
