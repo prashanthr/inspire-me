@@ -26,7 +26,7 @@ COPY . ${WORK_DIR}
 # Build the front end assets
 RUN yarn build-app
 # Install other deps
-RUN apt-get install apt-transport-https lsb-release ca-certificates nginx -y
+RUN apt-get install apt-transport-https lsb-release ca-certificates nginx net-tools vim -y
 # Check versions
 RUN nginx -v
 # NGINX
