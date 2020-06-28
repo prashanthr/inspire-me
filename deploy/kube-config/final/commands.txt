@@ -1,0 +1,11 @@
+# DEPLOY
+kubectl apply -f $KUBE_DEPLOY_BASE_PATH/namespace
+kubectl apply -f $KUBE_DEPLOY_BASE_PATH/deployment
+kubectl --namespace $KUBE_NAMESPACE get services
+
+# Configure loadbalancer https cert using let's encrypt
+https://www.digitalocean.com/docs/networking/load-balancers/how-to/ssl-termination/
+
+# Test
+curl -IkvL http://comical.site
+curl -IkvL https://comical.site

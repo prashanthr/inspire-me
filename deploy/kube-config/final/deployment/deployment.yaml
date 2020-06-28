@@ -3,24 +3,17 @@ kind: Service
 metadata:
   namespace: comical-site
   name: comical-site-app
-  annotations:
-    # service.beta.kubernetes.io/do-loadbalancer-protocol: "https"
-    service.beta.kubernetes.io/do-loadbalancer-hostname: "comical.site"
-    # service.beta.kubernetes.io/do-loadbalancer-protocol: "http"
-    # service.beta.kubernetes.io/do-loadbalancer-tls-ports: "443"
-    service.beta.kubernetes.io/do-loadbalancer-tls-passthrough: "true"
 spec:
   type: LoadBalancer
-  # externalTrafficPolicy: Cluster
   selector:
     app: comical-site-app
   ports:
   - port: 80
     name: http
-    targetPort: 9005
+    targetPort: 9000
   - port: 443
     name: https
-    targetPort: 9005
+    targetPort: 9000
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -39,8 +32,8 @@ spec:
     spec:
       containers:
       - name: comical-site-app
-        image: prequod/comical-site:nginx
+        image: prequod/inspire-me:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 9005
+        - containerPort: 9000
           protocol: TCP
