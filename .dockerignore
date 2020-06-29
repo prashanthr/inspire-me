@@ -1,0 +1,7 @@
+*.yaml
+*.yml
+.vscode
+build-functions
+netlify.toml
+deploy
+test
