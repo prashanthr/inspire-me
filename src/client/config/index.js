@@ -1,16 +1,16 @@
-const isProd = process.env.NODE_ENV.toLowerCase() === 'production'
-const localPort = process.env.SERVICE_PORT || 9000
+const isProd = () => process.env.NODE_ENV.toLowerCase() === 'production'
+const localPort = process.env.REACT_APP_SERVICE_PORT || 9000
 
 const localConfig = {
   apiBaseUrl: `http://localhost:${localPort}`,
-  servicePort: 9000
+  servicePort: localPort
 }
 
 const prodConfig = {
-  apiBaseUrl: 'http://comical.site'
+  apiBaseUrl: 'https://comical.site'
 }
 
-const overrides = isProd ? prodConfig : localConfig
+const overrides = isProd() ? prodConfig : localConfig
 
 const config = {
   ...overrides
