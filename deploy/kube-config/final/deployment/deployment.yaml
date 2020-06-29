@@ -32,7 +32,7 @@ spec:
     spec:
       containers:
       - name: comical-site-app
-        image: prequod/inspire-me:latest
+        image: prequod/comical-site:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 9000
