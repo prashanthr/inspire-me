@@ -23,8 +23,6 @@ ADD package*.json ${WORK_DIR}
 RUN yarn --${NODE_ENV}
 # Install App Dependencies
 COPY . ${WORK_DIR}
-# List Dir
-RUN ls -altr ${WORK_DIR}
 # Build the front end assets
 RUN yarn build-app
 # Run application
