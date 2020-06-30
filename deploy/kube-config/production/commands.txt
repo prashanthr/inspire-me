@@ -1,5 +1,35 @@
 # download cluster config file
-kubectl --kubeconfig=$KUBE_CONF_PATH get nodes
-kubectl --kubeconfig=$KUBE_CONF_PATH apply -f ./deploy/kube-config/production
-kubectl --kubeconfig=$KUBE_CONF_PATH get service inspire-me
-kubectl --kubeconfig=$KUBE_CONF_PATH get service inspire-me
+# kubectl --kubeconfig=$KUBE_CONF_PATH get nodes
+# kubectl --kubeconfig=$KUBE_CONF_PATH apply -f ./deploy/kube-config/production
+# kubectl --kubeconfig=$KUBE_CONF_PATH get service inspire-me
+# kubectl --kubeconfig=$KUBE_CONF_PATH get service inspire-me
+
+kubectl --kubeconfig="athenas-cluster-kubeconfig.yaml" apply -f ./deploy/kube-config/prod-test/echo1.yaml
+kubectl --kubeconfig="athenas-cluster-kubeconfig.yaml" get svc echo1
+kubectl --kubeconfig="athenas-cluster-kubeconfig.yaml" apply -f ./deploy/kube-config/prod-test/echo2.yaml
+kubectl --kubeconfig="athenas-cluster-kubeconfig.yaml" get svc
+
+kubectl --kubeconfig="athenas-cluster-kubeconfig.yaml" apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.26.1/deploy/static/mandatory.yaml
+kubectl --kubeconfig="athenas-cluster-kubeconfig.yaml" apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.26.1/deploy/static/provider/cloud-generic.yaml
+
+kubectl --kubeconfig="athenas-cluster-kubeconfig.yaml" get pods --all-namespaces -l app.kubernetes.io/name=ingress-nginx
+kubectl --kubeconfig="athenas-cluster-kubeconfig.yaml" get svc --namespace=ingress-nginx
+
+kubectl --kubeconfig="athenas-cluster-kubeconfig.yaml" apply -f ./deploy/kube-config/prod-test/echo-ingress.yaml
+
+kubectl --kubeconfig="athenas-cluster-kubeconfig.yaml" create namespace cert-manager
+kubectl --kubeconfig="athenas-cluster-kubeconfig.yaml" apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.12.0/cert-manager.yaml
+
+kubectl --kubeconfig="athenas-cluster-kubeconfig.yaml" get pods --namespace cert-manager
+kubectl  --kubeconfig="athenas-cluster-kubeconfig.yaml" create -f ./deploy/kube-config/prod-test/staging-issuer.yaml
+
+kubectl --kubeconfig="athenas-cluster-kubeconfig.yaml" apply -f ./deploy/kube-config/prod-test/echo-ingress.yaml
+kubectl --kubeconfig="athenas-cluster-kubeconfig.yaml" describe ingress
+kubectl --kubeconfig="athenas-cluster-kubeconfig.yaml" describe certificate
+
+kubectl --kubeconfig="athenas-cluster-kubeconfig.yaml" create -f ./deploy/kube-config/prod-test/prod-issuer.yaml
+kubectl --kubeconfig="athenas-cluster-kubeconfig.yaml" apply -f ./deploy/kube-config/prod-test/echo-ingress.yaml
+kubectl --kubeconfig="athenas-cluster-kubeconfig.yaml" describe certificate echo-tls
+
+kubectl --kubeconfig="athenas-cluster-kubeconfig.yaml" create namespace comical-site
+kubectl --kubeconfig="athenas-cluster-kubeconfig.yaml" apply -f ./deploy/kube-config/production

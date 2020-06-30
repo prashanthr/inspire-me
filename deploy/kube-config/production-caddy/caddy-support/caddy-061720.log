@@ -1,0 +1,40 @@
+{"level":"info","ts":1592436577.044735,"msg":"using adjacent Caddyfile"}
+{"level":"info","ts":1592436577.0517957,"logger":"admin","msg":"admin endpoint started","address":"tcp/localhost:2019","enforce_origin":false,"origins":["[::1]:2019","127.0.0.1:2019","localhost:2019"]}
+{"level":"info","ts":1592436577.0529459,"logger":"http","msg":"server is listening only on the HTTPS port but has no TLS connection policies; adding one to enable TLS","server_name":"srv0","https_port":443}
+{"level":"info","ts":1592436577.0535347,"logger":"http","msg":"enabling automatic HTTP->HTTPS redirects","server_name":"srv0"}
+{"level":"info","ts":1592436577.0544076,"logger":"tls","msg":"cleaned up storage units"}
+{"level":"info","ts":1592436577.0550501,"logger":"http","msg":"enabling automatic TLS certificate management","domains":["redacted.site"]}
+{"level":"info","ts":1592436577.0558252,"msg":"autosaved config","file":"/config/caddy/autosave.json"}
+{"level":"info","ts":1592436577.056541,"msg":"serving initial configuration"}
+2020/06/17 23:29:37 [INFO][redacted.site] Obtain certificate; acquiring lock...
+2020/06/17 23:29:37 [INFO][redacted.site] Obtain: Lock acquired; proceeding...
+2020/06/17 23:29:37 [INFO][cache:0xc000090b40] Started certificate maintenance routine
+2020/06/17 23:29:37 [INFO][redacted.site] Waiting on rate limiter...
+2020/06/17 23:29:37 [INFO][redacted.site] Done waiting
+2020/06/17 23:29:37 [INFO] [redacted.site] acme: Obtaining bundled SAN certificate given a CSR
+2020/06/17 23:29:37 [INFO] [redacted.site] AuthURL: https://acme-staging-v02.api.letsencrypt.org/acme/authz-v3/66420567
+2020/06/17 23:29:37 [INFO] [redacted.site] acme: use tls-alpn-01 solver
+2020/06/17 23:29:37 [INFO] [redacted.site] acme: Trying to solve TLS-ALPN-01
+2020/06/17 23:29:37 http: TLS handshake error from 127.0.0.1:48040: EOF
+2020/06/17 23:29:42 [INFO] Deactivating auth: https://acme-staging-v02.api.letsencrypt.org/acme/authz-v3/66420567
+2020/06/17 23:29:42 [ERROR] error: one or more domains had a problem:
+[redacted.site] acme: error: 400 :: urn:ietf:params:acme:error:malformed :: Server only speaks HTTP, not TLS, url:
+ (challenge=tls-alpn-01 remaining=[http-01])
+2020/06/17 23:29:42 [INFO] Unable to deactivate the authorization: https://acme-staging-v02.api.letsencrypt.org/acme/authz-v3/66420567
+2020/06/17 23:29:44 [INFO] [redacted.site] acme: Obtaining bundled SAN certificate given a CSR
+2020/06/17 23:29:44 [INFO] [redacted.site] AuthURL: https://acme-staging-v02.api.letsencrypt.org/acme/authz-v3/66420584
+2020/06/17 23:29:44 [INFO] [redacted.site] acme: Could not find solver for: tls-alpn-01
+2020/06/17 23:29:44 [INFO] [redacted.site] acme: use http-01 solver
+2020/06/17 23:29:44 [INFO] [redacted.site] acme: Trying to solve HTTP-01
+2020/06/17 23:29:49 [INFO] Deactivating auth: https://acme-staging-v02.api.letsencrypt.org/acme/authz-v3/66420584
+2020/06/17 23:29:49 [ERROR] error: one or more domains had a problem:
+[redacted.site] acme: error: 403 :: urn:ietf:params:acme:error:unauthorized :: Invalid response from http://redacted.site/.well-known/acme-challenge/uhs0oXpk10iJouLhWa4Pxizr2DIrBqhZ6ppAO-erO2Q [157.230.75.99]: "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><link rel=\"shortcut icon\" href=\"/favicon.ico\"><link rel=\"manifest\" hr", url:
+ (challenge=http-01 remaining=[])
+2020/06/17 23:29:49 [INFO] Unable to deactivate the authorization: https://acme-staging-v02.api.letsencrypt.org/acme/authz-v3/66420584
+2020/06/17 23:29:51 [ERROR] attempt 1: [redacted.site] Obtain: [redacted.site] error: one or more domains had a problem:
+[redacted.site] acme: error: 403 :: urn:ietf:params:acme:error:unauthorized :: Invalid response from http://redacted.site/.well-known/acme-challenge/uhs0oXpk10iJouLhWa4Pxizr2DIrBqhZ6ppAO-erO2Q [157.230.75.99]: "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><link rel=\"shortcut icon\" href=\"/favicon.ico\"><link rel=\"manifest\" hr", url:
+ - retrying in 1m0s (14.83096781s/720h0m0s elapsed)...
+^C{"level":"info","ts":1592436594.320533,"msg":"shutting down","signal":"SIGINT"}
+2020/06/17 23:29:54 [INFO][cache:0xc000090b40] Stopped certificate maintenance routine
+{"level":"info","ts":1592436594.3209422,"logger":"admin","msg":"stopped previous server"}
+{"level":"info","ts":1592436594.3209667,"msg":"shutdown done","signal":"SIGINT"}

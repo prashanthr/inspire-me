@@ -2,20 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: comical-site
-  name: comical-site
+  name: comical-site-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: comical-site
+      app: comical-site-app
   template:
     metadata:
       labels:
-        app: comical-site
+        app: comical-site-app
     spec:
       containers:
-        - name: comical-site
-          image: prequod/inspire-me:latest
+        - name: comical-site-app
+          image: prequod/comical-site:caddy
           ports:
             - containerPort: 9000
           imagePullPolicy: Always
