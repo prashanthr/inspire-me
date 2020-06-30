@@ -22,7 +22,6 @@
   },
   "scripts": {
     "start-app": "react-scripts start",
-    "start-functions": "netlify-lambda serve ./src/server/functions",
     "start-server": "babel-node ./src/server/index.js",
     "build-app": "react-scripts build",
     "build-functions": "netlify-lambda build ./src/server/functions",

@@ -1,0 +1,8 @@
+{
+  "port": 9000,
+  "healthCheck": {
+    "enabled": false,
+    "endpoint": "https://hc-ping.com/d08b7c5f-c253-4039-a1ae-83c8eb41f870",
+    "schedule": "* * * * *"
+  }
+}
