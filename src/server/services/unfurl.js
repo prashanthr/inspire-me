@@ -1,5 +1,6 @@
 import unfurled from 'unfurled'
-import { get as getProperty } from 'lodash';
+import { get as getProperty } from 'lodash'
+import { resolveUrl } from '../utils/resolve-url'
 class UnfurlService {
   async unfurl ({ url, type, disableUnfurl }) {
     if (disableUnfurl) {
@@ -10,7 +11,7 @@ class UnfurlService {
       case 'img':
       case 'image':
       case 'comic':
-       return this.getPrimaryImageUrl(result)
+       return await this.getPrimaryImageUrl(result)
       case 'basic':
       case 'article':
       case 'blog':
@@ -47,9 +48,14 @@ class UnfurlService {
     const { other, ogp } = data
     return getProperty(ogp, 'ogUrl', null) || getProperty(other, 'alWebUrl', null)
   }
-  getPrimaryImageUrl (data) {
-    const images = this.getImages(data)  
-    return images.length > 0 ? images[0].url : null
+  async getPrimaryImageUrl (data) {
+    const images = this.getImages(data)
+    if (images.length > 0) {
+      const resolvedUrl = await resolveUrl(images[0].url)
+      return resolvedUrl
+    } else {
+      return null
+    }
   }
 
   getImages (data) {
