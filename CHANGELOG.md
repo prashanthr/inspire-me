@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/prashanthr/inspire-me/compare/v0.7.0...v0.8.0) (2020-07-05)
+
+
+### Features
+
+* **ch61:** Add https url support for images ([#32](https://github.com/prashanthr/inspire-me/issues/32)) ([054ecbb](https://github.com/prashanthr/inspire-me/commit/054ecbb))
+
+
+
 <a name="0.7.0"></a>
 # [0.7.0](https://github.com/prashanthr/inspire-me/compare/v0.6.0...v0.7.0) (2020-06-30)
 
