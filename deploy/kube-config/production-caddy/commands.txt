@@ -1,3 +1,0 @@
-# download cluster config file
-
-kubectl --kubeconfig="athenas-garden-kubeconfig.yaml" apply -f ./deploy/kube-config/production-caddy
