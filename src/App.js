@@ -88,7 +88,7 @@ class App extends Component {
         </div>
         <Footer 
           className='footer'
-          text='Copyright © PR.'
+          text='Copyright © PR. Made with 💛. '
         />
       </div>
     );
