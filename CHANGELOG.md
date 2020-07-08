@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.9.0"></a>
+# [0.9.0](https://github.com/prashanthr/inspire-me/compare/v0.8.0...v0.9.0) (2020-07-08)
+
+
+### Features
+
+* **footer:** Add buy me a coffee link to footer ([#34](https://github.com/prashanthr/inspire-me/issues/34)) ([9945de4](https://github.com/prashanthr/inspire-me/commit/9945de4))
+
+
+
 <a name="0.8.0"></a>
 # [0.8.0](https://github.com/prashanthr/inspire-me/compare/v0.7.0...v0.8.0) (2020-07-05)
 
