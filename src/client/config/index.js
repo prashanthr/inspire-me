@@ -1,16 +1,28 @@
-const isProd = process.env.NODE_ENV.toLowerCase() === 'production'
-const localPort = process.env.SERVICE_PORT || 9000
+import { isProd } from '../utils/env'
+
+const localPort = process.env.REACT_APP_SERVICE_PORT || 9000
+
+const defaultConfig = {
+  coffeeUrl: 'https://www.buymeacoffee.com/TGuwXOA',
+  analytics: {
+    google: {
+      propertyId: 'UA-117106220-3'
+    }
+  }
+}
 
 const localConfig = {
   apiBaseUrl: `http://localhost:${localPort}`,
-  servicePort: 9000
+  servicePort: localPort,
+  ...defaultConfig
 }
 
 const prodConfig = {
-  apiBaseUrl: 'http://comical.site'
+  apiBaseUrl: 'https://comical.site',
+  ...defaultConfig
 }
 
-const overrides = isProd ? prodConfig : localConfig
+const overrides = isProd() ? prodConfig : localConfig
 
 const config = {
   ...overrides

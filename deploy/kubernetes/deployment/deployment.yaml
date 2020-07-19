@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: gelos
+  name: comical-site-app
+spec:
+  type: LoadBalancer
+  selector:
+    app: comical-site-app
+  ports:
+  - port: 80
+    name: http
+    targetPort: 9000
+  - port: 443
+    name: https
+    targetPort: 9000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: gelos
+  name: comical-site-app
+spec:
+  selector:
+    matchLabels:
+      app: comical-site-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: comical-site-app
+    spec:
+      containers:
+      - name: comical-site-app
+        image: prequod/comical-site:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9000
+          protocol: TCP

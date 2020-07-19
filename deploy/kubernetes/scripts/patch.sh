@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-kubectl --kubeconfig="minerva-kubeconfig.yaml" patch deployment inspire-me -p \
+kubectl --namespace $KUBE_NAMESPACE patch deployment $KUBE_APP_NAME -p \
   "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\"}}}}}"

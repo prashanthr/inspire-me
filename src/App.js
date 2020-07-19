@@ -6,6 +6,7 @@ import Loader from './client/components/Loader'
 import FlipImage from './client/components/FlipImageCard'
 import config from './client/config'
 import axios from 'axios'
+import { loadAnalytics } from './client/utils/analytics'
 import './App.css'
 
 const API_BASE_URL = `${config.apiBaseUrl}`
@@ -53,6 +54,7 @@ class App extends Component {
       .catch(err => this.setLoading(false))
   }
   componentWillMount () {
+    loadAnalytics(config.analytics.google.propertyId)
     this.inspire()
   }
   render() {
@@ -92,7 +94,7 @@ class App extends Component {
         </div>
         <Footer 
           className='footer'
-          text='Copyright © PR.'
+          text='Copyright © PR. Made with 💛. '
         />
       </div>
     );

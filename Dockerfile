@@ -2,11 +2,13 @@
 FROM node:current
 # Labels & metadata
 LABEL version="latest"
-LABEL name="inspire-me-service"
+LABEL name="comical-site"
 LABEL description="This is an image for inspire me service"
 LABEL maintainer "Prashanth R <https://github.com/prashanthr>"
 # OS Upgrades & Dependencies
-RUN apt-get update &&  apt-get dist-upgrade -y && apt-get clean
+RUN apt-get update && apt-get dist-upgrade -y
+RUN apt-get install apt-utils -y && apt-get install net-tools vim curl -y 
+RUN apt-get clean
 # Install Yarn
 RUN npm install -g yarn
 # Set env
@@ -19,13 +21,11 @@ WORKDIR ${WORK_DIR}
 # package handling
 ADD package*.json ${WORK_DIR}
 RUN yarn --${NODE_ENV}
-# RUN npm install pm2@latest -g
 # Install App Dependencies
 COPY . ${WORK_DIR}
 # Build the front end assets
 RUN yarn build-app
+# Run application
+CMD ["./node_modules/.bin/pm2-runtime", "start", "ecosystem.json"]
 # Expose port
 EXPOSE ${PORT}
-# Run application
-# CMD ["pm2-runtime", "start", "./ecosystem.json"]
-CMD ["./node_modules/.bin/pm2-runtime", "start", "ecosystem.json"]

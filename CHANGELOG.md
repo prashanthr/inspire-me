@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.9.0"></a>
+# [0.9.0](https://github.com/prashanthr/inspire-me/compare/v0.8.0...v0.9.0) (2020-07-08)
+
+
+### Features
+
+* **footer:** Add buy me a coffee link to footer ([#34](https://github.com/prashanthr/inspire-me/issues/34)) ([9945de4](https://github.com/prashanthr/inspire-me/commit/9945de4))
+
+
+
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/prashanthr/inspire-me/compare/v0.7.0...v0.8.0) (2020-07-05)
+
+
+### Features
+
+* **ch61:** Add https url support for images ([#32](https://github.com/prashanthr/inspire-me/issues/32)) ([054ecbb](https://github.com/prashanthr/inspire-me/commit/054ecbb))
+
+
+
+<a name="0.7.0"></a>
+# [0.7.0](https://github.com/prashanthr/inspire-me/compare/v0.6.0...v0.7.0) (2020-06-30)
+
+
+### Features
+
+* **ch33:** Add health check ([#31](https://github.com/prashanthr/inspire-me/issues/31)) ([2324dd9](https://github.com/prashanthr/inspire-me/commit/2324dd9))
+* **ch37:** https for plain app image ([#30](https://github.com/prashanthr/inspire-me/issues/30)) ([d359c04](https://github.com/prashanthr/inspire-me/commit/d359c04))
+
+
+
 <a name="0.6.0"></a>
 # [0.6.0](https://github.com/prashanthr/inspire-me/compare/v0.5.3...v0.6.0) (2019-12-28)
 
