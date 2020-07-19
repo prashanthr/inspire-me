@@ -5,6 +5,7 @@ import Footer from './client/components/Footer'
 import Loader from './client/components/Loader'
 import config from './client/config'
 import axios from 'axios'
+import { loadAnalytics } from './client/utils/analytics'
 import './App.css'
 
 const API_BASE_URL = `${config.apiBaseUrl}`
@@ -52,6 +53,7 @@ class App extends Component {
       .catch(err => this.setLoading(false))
   }
   componentWillMount () {
+    loadAnalytics(config.analytics.google.propertyId)
     this.inspire()
   }
   render() {
