@@ -1,4 +1,5 @@
-const isProd = () => process.env.NODE_ENV.toLowerCase() === 'production'
+import { isProd } from '../utils/env'
+
 const localPort = process.env.REACT_APP_SERVICE_PORT || 9000
 
 const defaultConfig = {
@@ -13,6 +14,11 @@ const localConfig = {
 
 const prodConfig = {
   apiBaseUrl: 'https://comical.site',
+  analytics: {
+    google: {
+      propertyId: 'UA-117106220-3'
+    }
+  },
   ...defaultConfig
 }
 
