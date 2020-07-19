@@ -6,7 +6,6 @@ import Loader from './client/components/Loader'
 import config from './client/config'
 import axios from 'axios'
 import { loadAnalytics } from './client/utils/analytics'
-import { isProd } from './client/utils/env'
 import './App.css'
 
 const API_BASE_URL = `${config.apiBaseUrl}`
@@ -54,9 +53,7 @@ class App extends Component {
       .catch(err => this.setLoading(false))
   }
   componentWillMount () {
-    if (isProd() && config.analytics.google.propertyId) {
-      loadAnalytics(config.analytics.google.propertyId)
-    }
+    loadAnalytics(config.analytics.google.propertyId)
     this.inspire()
   }
   render() {
