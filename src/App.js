@@ -92,15 +92,15 @@ class App extends Component {
             : (
               <div>
                 <Button
+                  text={'View Image Source'}
+                  className='info-button' 
+                  onClick={this.showSourceModal}
+                />
+                <br /><br />
+                <Button
                   text='Haha, next!'
                   className='inspire-button' 
                   onClick={this.inspire}
-                />
-                <br />
-                <Button
-                  text={'View Source'}
-                  className='info-button' 
-                  onClick={this.showSourceModal}
                 />
               </div>
             )

@@ -1,4 +1,5 @@
 .comical-strip {
-  max-height: 650px;
+  /* max-height: 650px; */
+  max-height: 75vh;
   max-width: 100%;
 }
