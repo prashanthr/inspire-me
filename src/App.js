@@ -18,7 +18,8 @@ class App extends Component {
     this.updateContext = this.updateContext.bind(this)
     this.showSourceModal = this.showSourceModal.bind(this)
     this.state = {
-      source: null,
+      flippable: false,
+      source: { name: null, url: null },
       img: null,
       loading: true
     }
@@ -58,20 +59,33 @@ class App extends Component {
     this.inspire()
   }
   render() {
+    console.log('this.state', this.state)
+    const ImageOnly = () =>
+      <Image
+        className='comical-strip' 
+        alt='comical-strip' 
+        src={this.state.img}
+      />
+    const FlipImageOnly = () => (
+      <FlipImage
+        frontComponent={<ImageOnly />}
+        rearComponent={(
+          <div>
+            Source: {this.state.source.name} / 
+            Url: {this.state.source.url}
+          </div>
+        )}
+      />
+    )
     return (
       <div className='App'>
         <div className='App-content'>
           <h3>Kinda Comical</h3>
-          {this.state.img && 
-            <FlipImage
-              frontComponent={<Image
-                className='inspire-strip' 
-                alt='inspire-strip' 
-                src={this.state.img}
-              />}
-              rearComponent={<div>Hello World</div>}
-            />
-          }
+          {this.state.img && (
+            this.state.flippable 
+            ? <FlipImageOnly />
+            : <ImageOnly />
+          )}
           <br />
           {this.state.loading 
             ? <Loader className='spinner' />
