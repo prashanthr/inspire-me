@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.10.0"></a>
+# [0.10.0](https://github.com/prashanthr/inspire-me/compare/v0.9.0...v0.10.0) (2020-07-20)
+
+
+### Features
+
+* **ch80:** Make source more clear ([#38](https://github.com/prashanthr/inspire-me/issues/38)) ([401b3cf](https://github.com/prashanthr/inspire-me/commit/401b3cf))
+* **ch81:** Redo page layout ([#39](https://github.com/prashanthr/inspire-me/issues/39)) ([4c7a3fc](https://github.com/prashanthr/inspire-me/commit/4c7a3fc))
+* **ch82:** Add google analytics ([#36](https://github.com/prashanthr/inspire-me/issues/36)) ([97d05a1](https://github.com/prashanthr/inspire-me/commit/97d05a1))
+
+
+
 <a name="0.9.0"></a>
 # [0.9.0](https://github.com/prashanthr/inspire-me/compare/v0.8.0...v0.9.0) (2020-07-08)
 
