@@ -8,6 +8,7 @@ import config from './client/config'
 import axios from 'axios'
 import { loadAnalytics } from './client/utils/analytics'
 import './App.css'
+import Emoji from './client/components/Emoji'
 
 const API_BASE_URL = `${config.apiBaseUrl}`
 
@@ -17,6 +18,7 @@ class App extends Component {
     this.inspire = this.inspire.bind(this)
     this.updateContext = this.updateContext.bind(this)
     this.showSourceModal = this.showSourceModal.bind(this)
+    this.showInfoModal = this.showInfoModal.bind(this)
     this.state = {
       flippable: false,
       source: { name: null, url: null },
@@ -44,6 +46,18 @@ class App extends Component {
       ----------------------------------------------------------------
       Source: ${this.state.source.name}
       Url: ${this.state.source.url}
+    `)
+  }
+
+  showInfoModal () {
+    alert(`
+      Welcome to ${API_BASE_URL}!
+
+      This web app is a fun way to browse random popular comic strips. It's meant to make you laugh and bring you joy and happiness. Thanks for visiting!
+      
+      NOTE: All comic strips belong to their respective creators. 
+      This site is an aggregator and I do not own any of the comics. 
+      Click on the View Image Source to learn more about the comic.
     `)
   }
 
@@ -79,8 +93,19 @@ class App extends Component {
     )
     return (
       <div className='App'>
+        <div className='menu-lt'>
+          <h2>Kinda Comical</h2>
+        </div>
+        <div className='menu-rt'>
+          <div className='menu-rt-content'>
+            <Button
+              text={<div>Info <Emoji emoji='ℹ' label='info' /></div>}
+              className='info-button menu-rt-link' 
+              onClick={this.showInfoModal}
+            />
+          </div>
+        </div>
         <div className='App-content'>
-          <h3>Kinda Comical</h3>
           {this.state.img && (
             this.state.flippable 
             ? <FlipImageOnly />
