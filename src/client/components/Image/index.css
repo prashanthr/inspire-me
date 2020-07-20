@@ -15,6 +15,6 @@
   
   .comical-strip:hover {
     transform: scale(1.5);
-    overflow-y: auto;
+    overflow: auto;
   }
 }
