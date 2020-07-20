@@ -56,7 +56,7 @@ class App extends Component {
       This web app is a fun way to browse random popular comic strips. It's meant to make you laugh and bring you joy and happiness. Thanks for visiting!
       
       NOTE: All comic strips belong to their respective creators. 
-      This site is an aggregator and I do not own any of the comics. 
+      This site is a random browser/aggregator and I do not own any of the comics. 
       Click on the View Image Source to learn more about the comic.
     `)
   }
