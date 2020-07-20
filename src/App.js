@@ -116,7 +116,7 @@ class App extends Component {
             : (
               <div>
                 <Button
-                  text={'View Image Source'}
+                  text={'View Comic Source'}
                   className='info-button' 
                   onClick={this.showSourceModal}
                 />
