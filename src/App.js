@@ -4,11 +4,11 @@ import Button from './client/components/Button'
 import Footer from './client/components/Footer'
 import Loader from './client/components/Loader'
 import FlipImage from './client/components/FlipImageCard'
+import Emoji from './client/components/Emoji'
 import config from './client/config'
 import axios from 'axios'
 import { loadAnalytics } from './client/utils/analytics'
 import './App.css'
-import Emoji from './client/components/Emoji'
 
 const API_BASE_URL = `${config.apiBaseUrl}`
 
