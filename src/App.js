@@ -73,7 +73,6 @@ class App extends Component {
     this.inspire()
   }
   render() {
-    console.log('this.state', this.state)
     const ImageOnly = () =>
       <Image
         className='comical-strip' 
