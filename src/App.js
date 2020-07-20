@@ -105,11 +105,13 @@ class App extends Component {
           </div>
         </div>
         <div className='App-content'>
-          {this.state.img && (
-            this.state.flippable 
-            ? <FlipImageOnly />
-            : <ImageOnly />
-          )}
+          <div className='comic-strip-wrap'>
+            {this.state.img && (
+              this.state.flippable 
+              ? <FlipImageOnly />
+              : <ImageOnly />
+            )}
+          </div>
           <br />
           {this.state.loading 
             ? <Loader className='spinner' />
