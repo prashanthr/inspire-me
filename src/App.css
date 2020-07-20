@@ -4,12 +4,36 @@
 
 .App-content {
   /* background-color: #282c34; */
-  min-height: 100vh;
+  min-height: 95vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /* font-size: calc(10px + 2vmin); */
   color: white;
-  padding-bottom: 10px;
+  margin-top: 20px;
+  /* margin-bottom: 5px; */
+}
+
+.menu-lt {
+  position: absolute; 
+  top: 0; 
+  left: 0;
+  margin-left: 20px;
+}
+
+.menu-rt {
+  position: absolute; 
+  top: 0; 
+  right: 0;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.menu-rt-content {
+  font-size: 20px !important;
+}
+
+.menu-rt-link {
+  font-size: 20px;
 }

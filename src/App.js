@@ -4,6 +4,7 @@ import Button from './client/components/Button'
 import Footer from './client/components/Footer'
 import Loader from './client/components/Loader'
 import FlipImage from './client/components/FlipImageCard'
+import Emoji from './client/components/Emoji'
 import config from './client/config'
 import axios from 'axios'
 import { loadAnalytics } from './client/utils/analytics'
@@ -17,6 +18,7 @@ class App extends Component {
     this.inspire = this.inspire.bind(this)
     this.updateContext = this.updateContext.bind(this)
     this.showSourceModal = this.showSourceModal.bind(this)
+    this.showInfoModal = this.showInfoModal.bind(this)
     this.state = {
       flippable: false,
       source: { name: null, url: null },
@@ -47,6 +49,18 @@ class App extends Component {
     `)
   }
 
+  showInfoModal () {
+    alert(`
+      Welcome to ${API_BASE_URL}!
+
+      This web app is a fun way to browse random popular comic strips. It's meant to make you laugh and bring you joy and happiness. Thanks for visiting!
+      
+      NOTE: All comic strips belong to their respective creators. 
+      This site is a random browser/aggregator and I do not own any of the comics. 
+      Click on the View Image Source to learn more about the comic.
+    `)
+  }
+
   inspire () {
     this.setLoading(true)
     axios
@@ -59,7 +73,6 @@ class App extends Component {
     this.inspire()
   }
   render() {
-    console.log('this.state', this.state)
     const ImageOnly = () =>
       <Image
         className='comical-strip' 
@@ -79,8 +92,19 @@ class App extends Component {
     )
     return (
       <div className='App'>
+        <div className='menu-lt'>
+          <h2>Kinda Comical</h2>
+        </div>
+        <div className='menu-rt'>
+          <div className='menu-rt-content'>
+            <Button
+              text={<div>Info <Emoji emoji='ℹ' label='info' /></div>}
+              className='info-button menu-rt-link' 
+              onClick={this.showInfoModal}
+            />
+          </div>
+        </div>
         <div className='App-content'>
-          <h3>Kinda Comical</h3>
           {this.state.img && (
             this.state.flippable 
             ? <FlipImageOnly />
@@ -92,7 +116,7 @@ class App extends Component {
             : (
               <div>
                 <Button
-                  text={'View Image Source'}
+                  text={'View Comic Source'}
                   className='info-button' 
                   onClick={this.showSourceModal}
                 />
