@@ -59,8 +59,6 @@ class App extends Component {
     super(props)
     this.inspire = this.inspire.bind(this)
     this.updateContext = this.updateContext.bind(this)
-    this.showSourceModal = this.showSourceModal.bind(this)
-    this.showInfoModal = this.showInfoModal.bind(this)
     this.toggleSourceInfo = this.toggleSourceInfo.bind(this)
     this.toggleFaq = this.toggleFaq.bind(this)
     this.state = {
