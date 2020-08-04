@@ -4,8 +4,8 @@
 
 .comical-site-modal-content {
   overflow-wrap: break-word;
-  background: #282c34;
-  color: white;
+  background-color: #282c34 !important;
+  color: white !important;
   text-align: left;
 }
 
