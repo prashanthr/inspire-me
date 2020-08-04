@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.3](https://github.com/prashanthr/inspire-me/compare/v0.11.2...v0.11.3) (2020-08-04)
+
+
+### Features
+
+* **modal:** Use modals instead of alerts for notices ([#42](https://github.com/prashanthr/inspire-me/issues/42)) ([d490cf6](https://github.com/prashanthr/inspire-me/commit/d490cf6bdf0671f7eedb540b4ca786c52ce0a3c9))
+
 ### [0.11.2](https://github.com/prashanthr/inspire-me/compare/v0.11.1...v0.11.2) (2020-07-22)
 
 ### [0.11.1](https://github.com/prashanthr/inspire-me/compare/v0.11.0...v0.11.1) (2020-07-20)
