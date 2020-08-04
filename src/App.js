@@ -18,7 +18,7 @@ const SourceInfoModal = ({ isOpen, onClose, name, url }) => (
     isOpen={isOpen}
     onClose={onClose}
     content={(
-      <div>
+      <div key='source-info-modal'>
         <h3>Comic Source Info</h3>
         <hr />
         <span>Source: {name}</span>
@@ -38,7 +38,7 @@ const FaqModal = ({ isOpen, onClose }) => (
     isOpen={isOpen}
     onClose={onClose}
     content={(
-      <div>
+      <div key='faq-modal'>
         <h3>Welcome to {API_BASE_URL}!</h3>
         <hr />
         <p>
