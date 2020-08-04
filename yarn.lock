@@ -2512,10 +2512,10 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
-"@universal-apps/swan-react@^0.0.17":
-  version "0.0.17"
-  resolved "https://registry.yarnpkg.com/@universal-apps/swan-react/-/swan-react-0.0.17.tgz#ac5ba625159d80d92b4414d5182414b7f8480084"
-  integrity sha512-AozlOGwBqxIS/k+6bi3nVAOidq633vkFGT6C+6bBZOyYCr8JKMxX3udr3PCNKIBenowyl1V26zjU2Crz+oozfw==
+"@universal-apps/swan-react@^0.0.18":
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/@universal-apps/swan-react/-/swan-react-0.0.18.tgz#56be26b4337994012c18bdb463d0886e16400d61"
+  integrity sha512-6ORNhzz3adm2cVmvV11KN2E9KK+jPbM7+8LsmwoBXDrUnymbx0Osk2tm35IfHULxaMN2wutpt6oKHM3dshCWuQ==
   dependencies:
     react-google-recaptcha "^2.1.0"
     react-google-recaptcha-v3 "^1.5.2"

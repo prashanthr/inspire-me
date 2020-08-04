@@ -23,7 +23,7 @@ const SourceInfoModal = ({ isOpen, onClose, name, url }) => (
         <hr />
         <span>Source: {name}</span>
         <br />
-        <p>Url: 
+        <p>Url:&nbsp;
           <a target='_blank' href={url} rel="noopener noreferrer">
             {url}
           </a>
@@ -141,16 +141,17 @@ class App extends Component {
         </div>
         <div className='App-content'>
           <div className='comical-site-modals'>
-            {<FaqModal 
+            <div>
+              {<FaqModal 
               isOpen={this.state.isFaqOpen}
               onClose={this.toggleFaq}
-            />}
-            {<SourceInfoModal
+            />}</div>
+            <div>{<SourceInfoModal
               isOpen={this.state.isSourceOpen}
               onClose={this.toggleSourceInfo}
               name={this.state.source.name}
               url={this.state.source.url}
-              />}
+              />}</div>
           </div>
           <div className='comic-strip-wrap'>
             {this.state.img && (
