@@ -1,0 +1,18 @@
+.comical-site-modal {
+  z-index: 9999;
+}
+
+.comical-site-modal-content {
+  overflow-wrap: break-word;
+  background: #282c34;
+  color: white;
+  text-align: left;
+}
+
+.comical-site-modal-close {
+  cursor: pointer;
+}
+
+.comical-site-modal-close:hover {
+  
+}

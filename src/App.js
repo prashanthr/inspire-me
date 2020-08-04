@@ -4,6 +4,7 @@ import Button from './client/components/Button'
 import Footer from './client/components/Footer'
 import Loader from './client/components/Loader'
 import FlipImage from './client/components/FlipImageCard'
+import Modal from './client/components/Modal'
 import Emoji from './client/components/Emoji'
 import config from './client/config'
 import axios from 'axios'
@@ -12,18 +13,61 @@ import './App.css'
 
 const API_BASE_URL = `${config.apiBaseUrl}`
 
+const SourceInfoModal = ({ isOpen, onClose, name, url }) => (
+  <Modal 
+    isOpen={isOpen}
+    onClose={onClose}
+    content={(
+      <div key='source-info-modal'>
+        <h3>Comic Source Info</h3>
+        <hr />
+        <span>Source: {name}</span>
+        <br />
+        <p>Url:&nbsp;
+          <a target='_blank' href={url} rel="noopener noreferrer">
+            {url}
+          </a>
+        </p>
+      </div>
+    )}
+  />
+)
+
+const FaqModal = ({ isOpen, onClose }) => (
+  <Modal 
+    isOpen={isOpen}
+    onClose={onClose}
+    content={(
+      <div key='faq-modal'>
+        <h3>Welcome to {API_BASE_URL}!</h3>
+        <hr />
+        <p>
+          This web app is a fun way to browse random popular comic strips. It's meant to make you laugh and bring you joy and happiness. Thanks for visiting!
+        </p>
+        <p>
+          NOTE: All comic strips belong to their respective creators.
+          This site is a random browser/aggregator and I do not own any of the comics.
+          Click on the View Image Source to learn more about the comic.
+        </p>
+      </div>
+    )}
+  />
+)
+
 class App extends Component {
   constructor (props) {
     super(props)
     this.inspire = this.inspire.bind(this)
     this.updateContext = this.updateContext.bind(this)
-    this.showSourceModal = this.showSourceModal.bind(this)
-    this.showInfoModal = this.showInfoModal.bind(this)
+    this.toggleSourceInfo = this.toggleSourceInfo.bind(this)
+    this.toggleFaq = this.toggleFaq.bind(this)
     this.state = {
       flippable: false,
       source: { name: null, url: null },
       img: null,
-      loading: true
+      loading: true,
+      isFaqOpen: false,
+      isSourceOpen: false
     }
   }
   updateContext (context) {
@@ -34,31 +78,22 @@ class App extends Component {
     })
   }
 
+  toggleFaq () {
+    this.setState({
+      isFaqOpen: !this.state.isFaqOpen
+    })
+  }
+
+  toggleSourceInfo() {
+    this.setState({
+      isSourceOpen: !this.state.isSourceOpen
+    })
+  }
+
   setLoading (value) {
     this.setState({
       loading: value
     })
-  }
-
-  showSourceModal () {
-    alert(`
-      Source Info:
-      ----------------------------------------------------------------
-      Source: ${this.state.source.name}
-      Url: ${this.state.source.url}
-    `)
-  }
-
-  showInfoModal () {
-    alert(`
-      Welcome to ${API_BASE_URL}!
-
-      This web app is a fun way to browse random popular comic strips. It's meant to make you laugh and bring you joy and happiness. Thanks for visiting!
-      
-      NOTE: All comic strips belong to their respective creators. 
-      This site is a random browser/aggregator and I do not own any of the comics. 
-      Click on the View Image Source to learn more about the comic.
-    `)
   }
 
   inspire () {
@@ -100,11 +135,24 @@ class App extends Component {
             <Button
               text={<div>Info <Emoji emoji='ℹ' label='info' /></div>}
               className='info-button menu-rt-link' 
-              onClick={this.showInfoModal}
+              onClick={this.toggleFaq}
             />
           </div>
         </div>
         <div className='App-content'>
+          <div className='comical-site-modals'>
+            <div>
+              {<FaqModal 
+              isOpen={this.state.isFaqOpen}
+              onClose={this.toggleFaq}
+            />}</div>
+            <div>{<SourceInfoModal
+              isOpen={this.state.isSourceOpen}
+              onClose={this.toggleSourceInfo}
+              name={this.state.source.name}
+              url={this.state.source.url}
+              />}</div>
+          </div>
           <div className='comic-strip-wrap'>
             {this.state.img && (
               this.state.flippable 
@@ -120,7 +168,7 @@ class App extends Component {
                 <Button
                   text={'View Comic Source'}
                   className='info-button' 
-                  onClick={this.showSourceModal}
+                  onClick={this.toggleSourceInfo}
                 />
                 <br /><br />
                 <Button
