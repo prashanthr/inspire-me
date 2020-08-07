@@ -37,8 +37,8 @@ class InspireService {
   }
 
   async inspire ({ innerSources }) {
-    const innerSources = this.getResolvedInnerSources(innerSources)
-    const source = await this.getRandomSource({ innerSources })
+    const innerSourceList = this.getResolvedInnerSources(innerSources)
+    const source = await this.getRandomSource({ innerSources: innerSourceList })
     const result = await UnfurlService.unfurl({ 
       url: source.url, 
       type: source.type,
