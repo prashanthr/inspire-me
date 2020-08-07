@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.5](https://github.com/prashanthr/inspire-me/compare/v0.11.4...v0.11.5) (2020-08-07)
+
+
+### Features
+
+* **dynamic-comic-sources:** Customize comic sources via url params [ch105] ([#43](https://github.com/prashanthr/inspire-me/issues/43)) ([5c5a3f0](https://github.com/prashanthr/inspire-me/commit/5c5a3f02b6a2db3a86aa7bc5086ad1c75a61fc6f))
+
 ### [0.11.4](https://github.com/prashanthr/inspire-me/compare/v0.11.3...v0.11.4) (2020-08-04)
 
 
