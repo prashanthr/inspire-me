@@ -23,7 +23,7 @@ class InspireService {
   }
 
   getResolvedInnerSources (sources) {
-    if (!sources || sources.length === 0) {
+    if (!sources) {
       return []
     }
     const sourceList = sources
@@ -45,7 +45,7 @@ class InspireService {
       disableUnfurl: source.disableUnfurl
     })
     if (!result) {
-     return this.inspire() 
+     return this.inspire({ innerSources })
     }
     return {
       source,
