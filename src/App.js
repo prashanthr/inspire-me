@@ -97,9 +97,13 @@ class App extends Component {
   }
 
   inspire () {
+    const sources = (
+      new URLSearchParams(window.location.search)
+      .get('sources')
+    )
     this.setLoading(true)
     axios
-      .get(`${API_BASE_URL}/api/inspire`)
+      .get(`${API_BASE_URL}/api/inspire?sources=${sources}`)
       .then(res => this.updateContext(res.data))
       .catch(err => this.setLoading(false))
   }

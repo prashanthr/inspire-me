@@ -3,8 +3,14 @@ import { sample } from 'lodash'
 import SOURCES from './comic-sources'
 
 class ComicService extends SourceService {
-  getSource () {
-    return sample(SOURCES.filter(source => !source.disabled))
+  getSource ({ whitelist = [] }) {
+    const enabledSources = SOURCES.filter(source => !source.disabled)
+    const whitelistedSources = enabledSources
+      .filter(source => whitelist.includes(source.name))
+    const resolvedSources = whitelistedSources.length > 0 
+      ? whitelistedSources 
+      : enabledSources
+    return sample(resolvedSources)
   }
 }
 
