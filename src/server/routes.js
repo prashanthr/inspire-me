@@ -10,7 +10,8 @@ const setupRoutes = (app) => {
 
   app.get('/api/inspire', async (req, res, next) => {
     try {
-      const inspiration = await InspireService.inspire()
+      const sources = req.query && req.query.sources ? req.query.sources : null
+      const inspiration = await InspireService.inspire({ innerSources: sources })
       res.send(JSON.stringify(inspiration))
     } catch (err) {
       console.error('API Error', err)

@@ -12,8 +12,8 @@ class SourceService {
     }
   }
 
-  async getDetails () {
-    const source = this.getSource()
+  async getDetails ({ innerSources }) {
+    const source = this.getSource({ whitelist: innerSources })
     return {
       name: source.name,
       url: await this.getUrl(source),
