@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.7](https://github.com/prashanthr/inspire-me/compare/v0.11.6...v0.11.7) (2020-08-08)
+
+
+### Features
+
+* **filter-source-ui:** Add component to filter sources in UI ([a78b14e](https://github.com/prashanthr/inspire-me/commit/a78b14e3a19895230d5c50c1fef8e35265098df1))
+* **sources:** Add more comic sources ([b024537](https://github.com/prashanthr/inspire-me/commit/b024537cee8f835332ff751f357c6f497ff42865))
+
 ### [0.11.6](https://github.com/prashanthr/inspire-me/compare/v0.11.5...v0.11.6) (2020-08-08)
 
 
