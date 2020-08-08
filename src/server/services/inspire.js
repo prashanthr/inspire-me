@@ -28,7 +28,7 @@ class InspireService {
     }
     const sourceList = sources
       .split(',')
-      .map(src => src.replace(/[^\w]/gi, '')) // Filter out bad chars
+      .map(src => src.replace(/[^\w-]/gi, '')) // Filter out bad chars
     if (sourceList && sourceList.length > 0) {
       return sourceList
     } else {
