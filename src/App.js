@@ -54,6 +54,39 @@ const FaqModal = ({ isOpen, onClose }) => (
   />
 )
 
+const FilterSource = ({ source }) => {
+  const hasWindowSearch = window && window.location && window.location.search
+  const hasSearch = hasWindowSearch && window.location.search.length > 0
+  const filterSourceUrl = `${window.location.origin}/?sources=${source.name}`
+  const showAllUrl = window.location.origin
+  return (
+    <div className='filter-source'>
+      {!hasSearch 
+      ? (
+        <div>
+          Showing all.&nbsp;
+          <Button
+            className='filter-source-button'
+            text={`Show only ${source.name} comics`}
+            onClick={() => window.location.replace(filterSourceUrl)}
+          />
+        </div>
+        )
+      : (
+        <div>
+          Showing only {source.name} comics.&nbsp;
+          <Button 
+            className='filter-source-button' 
+            text={'Show all'} 
+            onClick={() => window.location.replace(showAllUrl)} 
+          />
+        </div>
+        )
+      }
+    </div>
+  )
+}
+
 class App extends Component {
   constructor (props) {
     super(props)
@@ -179,6 +212,8 @@ class App extends Component {
                   text='Haha, next!'
                   className='inspire-button' 
                   onClick={this.inspire}
+                /><br /><br />
+                <FilterSource source={this.state.source} 
                 />
               </div>
             )
