@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.6](https://github.com/prashanthr/inspire-me/compare/v0.11.5...v0.11.6) (2020-08-08)
+
+
+### Bug Fixes
+
+* **source:** Allow dashes ([7254250](https://github.com/prashanthr/inspire-me/commit/72542509eaadb25f391cd41f07d627043108d47a))
+
 ### [0.11.5](https://github.com/prashanthr/inspire-me/compare/v0.11.4...v0.11.5) (2020-08-07)
 
 
