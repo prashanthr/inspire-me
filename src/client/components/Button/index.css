@@ -47,3 +47,21 @@
 .info-button:hover { 
   text-decoration: underline;
 }
+
+.filter-source {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.filter-source-button {
+  cursor: pointer;
+  font-style: italic;
+  color: white;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.filter-source-button:hover { 
+  text-decoration: underline;
+}

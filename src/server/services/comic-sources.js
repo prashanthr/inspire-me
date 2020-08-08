@@ -152,6 +152,96 @@ const sources = [{
       prefix: 'poochcafe'
     })
   }
+}, {
+  name: 'peanuts',
+  getUrl: async () => {
+    const date = randomDate(new Date(1950, 9, 2), new Date())
+    return getGOComicsUrl({
+      date,
+      prefix: 'peanuts'
+    })
+  }
+},{
+  name: 'closetohome',
+  getUrl: async () => {
+    const date = randomDate(new Date(1992, 11, 7), new Date())
+    return getGOComicsUrl({
+      date,
+      prefix: 'closetohome'
+    })
+  }
+}, {
+  name: 'wizardofid',
+  getUrl: async () => {
+    const date = randomDate(new Date(2002, 0, 1), new Date())
+    return getGOComicsUrl({
+      date,
+      prefix: 'wizardofid'
+    })
+  }
+}, {
+  name: 'darksideofthehorse',
+  getUrl: async () => {
+    const date = randomDate(new Date(2010, 5, 25), new Date())
+    return getGOComicsUrl({
+      date,
+      prefix: 'darksideofthehorse'
+    })
+  }
+}, {
+  name: 'pickles',
+  getUrl: async () => {
+    const date = randomDate(new Date(2003, 0, 1), new Date())
+    return getGOComicsUrl({
+      date,
+      prefix: 'pickles'
+    })
+  }
+}, {
+  name: 'herman',
+  getUrl: async () => {
+    const date = randomDate(new Date(1997, 5, 2), new Date())
+    return getGOComicsUrl({
+      date,
+      prefix: 'herman'
+    })
+  }
+}, {
+  name: 'reallifeadventures',
+  getUrl: async () => {
+    const date = randomDate(new Date(1998, 0, 1), new Date())
+    return getGOComicsUrl({
+      date,
+      prefix: 'reallifeadventures'
+    })
+  }
+}, {
+  name: 'offthemark',
+  getUrl: async () => {
+    const date = randomDate(new Date(2002, 8, 2), new Date())
+    return getGOComicsUrl({
+      date,
+      prefix: 'offthemark'
+    })
+  }
+}, {
+  name: 'duplex',
+  getUrl: async () => {
+    const date = randomDate(new Date(1996, 7, 12), new Date())
+    return getGOComicsUrl({
+      date,
+      prefix: 'duplex'
+    })
+  }
+}, {
+  name: 'wumo',
+  getUrl: async () => {
+    const date = randomDate(new Date(2013, 9, 13), new Date())
+    return getGOComicsUrl({
+      date,
+      prefix: 'wumo'
+    })
+  }
 }]
 
 export default sources
