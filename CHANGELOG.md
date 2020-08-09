@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.8](https://github.com/prashanthr/inspire-me/compare/v0.11.7...v0.11.8) (2020-08-09)
+
+
+### Bug Fixes
+
+* **multiple-comic-sources:** Fix ui for multiple sources ([#45](https://github.com/prashanthr/inspire-me/issues/45)) ([7b48c88](https://github.com/prashanthr/inspire-me/commit/7b48c8851cf563fe2f2566a128b359fa168df48a))
+
 ### [0.11.7](https://github.com/prashanthr/inspire-me/compare/v0.11.6...v0.11.7) (2020-08-08)
 
 
