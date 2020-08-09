@@ -57,32 +57,48 @@ const FaqModal = ({ isOpen, onClose }) => (
 const FilterSource = ({ source }) => {
   const hasWindowSearch = window && window.location && window.location.search
   const hasSearch = hasWindowSearch && window.location.search.length > 0
+  const urlSearchParams = hasSearch ? new URLSearchParams(window.location.search) : null
+  const urlSources = urlSearchParams ? urlSearchParams.get('sources') : null
+  const numSources = urlSources ? urlSources.split(',').length : 0
   const filterSourceUrl = `${window.location.origin}/?sources=${source.name}`
   const showAllUrl = window.location.origin
+  const ShowAllButton = () => (
+    <Button 
+      className='filter-source-button' 
+      text={'Show all'} 
+      onClick={() => window.location.replace(showAllUrl)} 
+    />
+  )
+  const ShowOnlySourceButton = () => (
+    <Button
+      className='filter-source-button'
+      text={`Show only ${source.name} comics`}
+      onClick={() => window.location.replace(filterSourceUrl)}
+    />
+  )
   return (
     <div className='filter-source'>
-      {!hasSearch 
+      {numSources === 0 
       ? (
         <div>
           Showing all.&nbsp;
-          <Button
-            className='filter-source-button'
-            text={`Show only ${source.name} comics`}
-            onClick={() => window.location.replace(filterSourceUrl)}
-          />
+          <ShowOnlySourceButton />
         </div>
         )
-      : (
-        <div>
-          Showing only {source.name} comics.&nbsp;
-          <Button 
-            className='filter-source-button' 
-            text={'Show all'} 
-            onClick={() => window.location.replace(showAllUrl)} 
-          />
-        </div>
+      : (numSources === 1 
+        ? (
+          <div>
+            Showing only {source.name} comics.&nbsp;
+            <ShowAllButton />
+          </div>
         )
-      }
+        : (
+          <div>
+            Showing multiple comic sources. &nbsp;
+            <ShowAllButton /> or <ShowOnlySourceButton />
+          </div>
+        )
+      )}
     </div>
   )
 }
