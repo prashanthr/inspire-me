@@ -18,7 +18,7 @@ const localConfig = {
 }
 
 const prodConfig = {
-  apiBaseUrl: 'https://comical.site',
+  apiBaseUrl: 'https://comical.universal-apps.xyz',
   ...defaultConfig
 }
 

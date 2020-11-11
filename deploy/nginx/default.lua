@@ -1,7 +1,7 @@
 server {
   listen 9005 default_server;
 
-  server_name comical.site;
+  server_name comical.universal-apps.xyz;
   root /var/www/deploy/app/build;
 
   location / {
