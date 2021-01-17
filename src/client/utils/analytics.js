@@ -5,7 +5,7 @@ export const loadAnalytics = (propertyTag) => {
       window.dataLayer = window.dataLayer || []
       function gtag(){window.dataLayer.push(arguments)}
       gtag('js', new Date())
-      gtag('config', propertyTag)
+      gtag('config', propertyTag, { 'anonymize_ip': true,'allow_ad_personalization_signals': false })
       console.info('Analytics is enabled')
     } else {
       console.info('Analytics is disabled')
