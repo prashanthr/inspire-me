@@ -11,16 +11,27 @@
 //       has no strip, the API just retries with another one.
 //   xkcd: handled separately via xkcd's official JSON API.
 
+// DISABLED (2026-11-20): GoComics has updated its site. Requests from our
+// server (HTTP 403, `server: BunnyCDN-...`) now get a JavaScript challenge
+// page ("Establishing a secure connection ... Please enable JavaScript to
+// continue") instead of the comic, and a plain server-side fetch can't
+// complete it, so every GoComics strip fails. Until GoComics offers a
+// supported way to fetch strips (an official API/feed or permission), only
+// xkcd, which has an official JSON API, is served. The GoComics resolver in
+// comic.js is kept so re-enabling is just removing `disabled: true` below.
 const gocomics = (name, slug, start, extra = {}) => ({
   name,
   type: 'gocomics',
   slug,
   start,
+  disabled: true,
   ...extra
 })
 
 const sources = [
+  // Primary (and currently only enabled) source: xkcd's official JSON API.
   { name: 'xkcd', type: 'xkcd' },
+  // Disabled, see the comment on `gocomics` above.
   gocomics('arloandjanis', 'arloandjanis', [1999, 1, 1]),
   gocomics('the-awkward-yeti', 'the-awkward-yeti', [2014, 10, 8]),
   gocomics('calvin', 'calvinandhobbes', [2012, 1, 1]),
