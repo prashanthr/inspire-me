@@ -72,3 +72,35 @@ test('returns 502 when every attempt fails', async () => {
   assert.strictEqual(res.statusCode, 502)
   assert.ok(res.body.error)
 })
+
+test('logs who refused us on a 403, without leaking details to the client', async () => {
+  global.fetch = async () => ({
+    ok: false,
+    status: 403,
+    headers: new Headers([
+      ['server', 'cloudflare'],
+      ['cf-ray', 'abc123-IAD'],
+      ['content-type', 'text/html'],
+      ['authorization-echo', 'should-not-be-logged']
+    ]),
+    text: async () => '<html><script>var x=1</script><body><h1>Just a moment...</h1></body></html>'
+  })
+  const logged = []
+  const original = console.error
+  console.error = (...args) => logged.push(args.join(' '))
+  const res = makeRes()
+  try {
+    await loadHandler()({ query: { sources: 'garfield' } }, res)
+  } finally {
+    console.error = original
+  }
+  assert.strictEqual(res.statusCode, 502)
+  assert.ok(!JSON.stringify(res.body).includes('cloudflare'))
+  const details = logged.find((line) => line.startsWith('API Refusal details'))
+  assert.ok(details, 'refusal details are logged')
+  assert.match(details, /server=cloudflare/)
+  assert.match(details, /cf-ray=abc123-IAD/)
+  assert.match(details, /Just a moment/)
+  assert.ok(!details.includes('should-not-be-logged'))
+  assert.ok(!details.includes('var x=1'))
+})

@@ -23,6 +23,10 @@ module.exports = async (req, res) => {
     res.status(200).json(comic)
   } catch (err) {
     console.error('API Error', err.message)
+    if (err.diagnostics) {
+      // First refused response of this request (logs only, never returned to the client)
+      console.error('API Refusal details', err.diagnostics)
+    }
     res.status(502).json({ error: 'Could not fetch a comic right now. Please try again.' })
   }
 }

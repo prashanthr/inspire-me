@@ -23,6 +23,38 @@ const randomDate = ([y, m, d]) => {
   return new Date(Date.UTC(day.getUTCFullYear(), day.getUTCMonth(), day.getUTCDate()))
 }
 
+// Headers worth logging when a request is refused: they identify who blocked us
+// (CDN / bot-protection vendor) without leaking anything sensitive.
+const DIAGNOSTIC_HEADERS = /^(server|via|retry-after|content-type|cf-|x-datadome|x-px|x-sucuri|x-akamai|x-iinfo|x-amz-cf|x-cache)/i
+
+// Summarise a refused response for the server log only (never sent to clients):
+// a few vendor-identifying headers, cookie NAMES (not values), and the start of the body.
+const describeRefusal = async (res) => {
+  const headers = []
+  if (res.headers && typeof res.headers.forEach === 'function') {
+    res.headers.forEach((value, name) => {
+      if (DIAGNOSTIC_HEADERS.test(name)) {
+        headers.push(`${name}=${String(value).slice(0, 80)}`)
+      }
+    })
+  }
+  const setCookie =
+    res.headers && typeof res.headers.getSetCookie === 'function' ? res.headers.getSetCookie() : []
+  const cookieNames = setCookie.map((c) => c.split('=')[0]).filter(Boolean)
+  let body = ''
+  try {
+    body = (await res.text())
+      .replace(/<(script|style)[\s\S]*?<\/\1>/gi, ' ')
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .slice(0, 300)
+  } catch (err) {
+    // body unavailable; headers are still useful
+  }
+  return `headers: ${headers.join(', ') || 'none'}; set-cookie names: ${cookieNames.join(', ') || 'none'}; body: ${body || 'empty'}`
+}
+
 const fetchWithTimeout = async (url, { timeoutMs, headers } = {}) => {
   const controller = new AbortController()
   const timer = setTimeout(() => controller.abort(), timeoutMs || ATTEMPT_TIMEOUT_MS)
@@ -33,7 +65,11 @@ const fetchWithTimeout = async (url, { timeoutMs, headers } = {}) => {
       signal: controller.signal
     })
     if (!res.ok) {
-      throw new Error(`HTTP ${res.status} for ${url}`)
+      const failure = new Error(`HTTP ${res.status} for ${url}`)
+      if (res.status === 401 || res.status === 403 || res.status === 429 || res.status === 503) {
+        failure.diagnostics = await describeRefusal(res)
+      }
+      throw failure
     }
     return res
   } finally {
@@ -79,6 +115,7 @@ const getRandomComic = async (whitelist = []) => {
   const pool = pickPool(whitelist)
   const deadline = Date.now() + TOTAL_BUDGET_MS
   const errors = []
+  let diagnostics = null
 
   for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
     const remaining = deadline - Date.now()
@@ -97,11 +134,13 @@ const getRandomComic = async (whitelist = []) => {
       }
     } catch (err) {
       errors.push(`${source.name}: ${err.message}`)
+      diagnostics = diagnostics || (err.diagnostics ? `${source.name}: ${err.diagnostics}` : null)
     }
   }
 
   const failure = new Error(`Could not fetch a comic: ${errors.join(' | ')}`)
   failure.attempts = errors
+  failure.diagnostics = diagnostics
   throw failure
 }
 
