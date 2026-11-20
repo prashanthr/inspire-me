@@ -23,14 +23,10 @@
     "unfurled": "^1.1.5"
   },
   "scripts": {
+    "start": "vercel dev",
     "start-app": "react-scripts start",
-    "start-server": "babel-node ./src/server/index.js",
     "build-app": "react-scripts build",
-    "build-functions": "netlify-lambda build ./src/server/functions",
-    "dock-build-and-run": "./bin/infra/docker-build-and-run.sh",
-    "build-and-run": "./bin/infra/build-and-run.sh",
-    "build-and-release": "CONTAINER_NAME=comical-site TAG_NAME=latest ./bin/infra/build-and-release.sh",
-    "test": "babel-node ./test/server/unfurl.js",
+    "test": "node --test \"test/api/*.test.js\"",
     "eject": "react-scripts eject",
     "release": "standard-version"
   },

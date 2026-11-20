@@ -39,7 +39,7 @@ const FaqModal = ({ isOpen, onClose }) => (
     onClose={onClose}
     content={(
       <div key='faq-modal'>
-        <h3>Welcome to {API_BASE_URL}!</h3>
+        <h3>Welcome to {window.location.host}!</h3>
         <hr />
         <p>
           This web app is a fun way to browse random popular comic strips. It's meant to make you laugh and bring you joy and happiness. Thanks for visiting!
@@ -115,6 +115,7 @@ class App extends Component {
       source: { name: null, url: null },
       img: null,
       loading: true,
+      error: false,
       isFaqOpen: false,
       isSourceOpen: false
     }
@@ -123,7 +124,8 @@ class App extends Component {
     this.setState({ 
       img: context.data,
       source: context.source,
-      loading: false
+      loading: false,
+      error: false
     })
   }
 
@@ -150,11 +152,13 @@ class App extends Component {
       new URLSearchParams(window.location.search)
       .get('sources')
     )
-    this.setLoading(true)
+    this.setState({ loading: true, error: false })
     axios
-      .get(`${API_BASE_URL}/api/inspire?sources=${sources}`)
+      .get(`${API_BASE_URL}/api/inspire`, {
+        params: sources ? { sources } : {}
+      })
       .then(res => this.updateContext(res.data))
-      .catch(err => this.setLoading(false))
+      .catch(err => this.setState({ loading: false, error: true }))
   }
   componentWillMount () {
     loadAnalytics(config.analytics.google.propertyId)
@@ -214,6 +218,11 @@ class App extends Component {
             )}
           </div>
           <br />
+          {this.state.error && (
+            <p className='comical-error'>
+              Couldn't fetch a comic right now. Give it another go!
+            </p>
+          )}
           {this.state.loading 
             ? <Loader className='spinner' />
             : (
