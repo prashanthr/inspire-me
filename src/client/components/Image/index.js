@@ -5,7 +5,8 @@ const Image = ({ src, className, alt }) => (
   <img
     className={className} 
     alt={alt} 
-    src={src} 
+    src={src}
+    referrerPolicy='no-referrer'
   />
 )
 
