@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.9](https://github.com/prashanthr/inspire-me/compare/v0.11.8...v0.11.9) (2026-11-21)
+
+
+### Bug Fixes
+
+* serve comics API from Vercel serverless functions ([#74](https://github.com/prashanthr/inspire-me/issues/74)) ([596df25](https://github.com/prashanthr/inspire-me/commit/596df25e87c91232ddff6af03df509959c18f7f8))
+* **analytics:** Make analytics privacy compliant ([#50](https://github.com/prashanthr/inspire-me/issues/50)) ([d58502a](https://github.com/prashanthr/inspire-me/commit/d58502ab42239f26a436b36e35a01630fa5600f7))
+
 ### [0.11.8](https://github.com/prashanthr/inspire-me/compare/v0.11.7...v0.11.8) (2020-08-09)
 
 

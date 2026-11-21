@@ -1,6 +1,6 @@
 {
   "name": "inspire-me",
-  "version": "0.11.8",
+  "version": "0.11.9",
   "private": true,
   "dependencies": {
     "@universal-apps/swan-react": "^0.0.18",
